@@ -9,7 +9,8 @@
     <title>Mountain Monthly - Cloudcroft &amp; the Sacramento Mountains</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         /* ===== CSS Custom Properties — Mountain Dusk Palette ===== */
         :root {
@@ -225,11 +226,26 @@
         }
 
         @keyframes coverPulse {
-            0%   { transform: scale(1); }
-            20%  { transform: scale(0.88); }
-            50%  { transform: scale(1.06); box-shadow: 0 8px 32px rgba(200, 135, 62, 0.4); }
-            80%  { transform: scale(0.97); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            20% {
+                transform: scale(0.88);
+            }
+
+            50% {
+                transform: scale(1.06);
+                box-shadow: 0 8px 32px rgba(200, 135, 62, 0.4);
+            }
+
+            80% {
+                transform: scale(0.97);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         .cover-btn img {
@@ -539,11 +555,25 @@
 
         /* ===== Tablet ===== */
         @media (max-width: 680px) {
-            .container { border-radius: var(--radius-lg); }
-            .hero { padding: 36px 28px 28px; }
-            .section { padding: 24px 28px; }
-            .covers-grid { gap: 10px; }
-            footer { padding: 20px 28px 24px; }
+            .container {
+                border-radius: var(--radius-lg);
+            }
+
+            .hero {
+                padding: 36px 28px 28px;
+            }
+
+            .section {
+                padding: 24px 28px;
+            }
+
+            .covers-grid {
+                gap: 10px;
+            }
+
+            footer {
+                padding: 20px 28px 24px;
+            }
         }
 
         /* ===== Mobile ===== */
@@ -604,8 +634,14 @@
                 gap: 10px;
             }
 
-            .cover-month { font-size: 10px; }
-            .cover-month .cover-new { font-size: 8px; padding: 1px 4px; }
+            .cover-month {
+                font-size: 10px;
+            }
+
+            .cover-month .cover-new {
+                font-size: 8px;
+                padding: 1px 4px;
+            }
 
             .btn {
                 font-size: 15px;
@@ -626,16 +662,20 @@
 
 <body>
     <!-- Mountain range silhouette background -->
-    <svg class="mountains-bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true">
+    <svg class="mountains-bg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 400" preserveAspectRatio="none"
+        aria-hidden="true">
         <!-- Back range — darker, taller -->
-        <path d="M0,400 L0,280 L60,250 L120,270 L180,220 L240,240 L300,180 L340,195 L380,160 L420,175 L480,130 L520,150 L560,110 L600,140 L660,100 L700,120 L740,85 L780,105 L820,70 L860,95 L900,120 L940,100 L980,140 L1020,115 L1060,145 L1100,125 L1140,160 L1180,140 L1220,175 L1260,155 L1300,190 L1340,210 L1380,230 L1440,200 L1440,400 Z"
-              fill="#1a2536" opacity="0.5"/>
+        <path
+            d="M0,400 L0,280 L60,250 L120,270 L180,220 L240,240 L300,180 L340,195 L380,160 L420,175 L480,130 L520,150 L560,110 L600,140 L660,100 L700,120 L740,85 L780,105 L820,70 L860,95 L900,120 L940,100 L980,140 L1020,115 L1060,145 L1100,125 L1140,160 L1180,140 L1220,175 L1260,155 L1300,190 L1340,210 L1380,230 L1440,200 L1440,400 Z"
+            fill="#1a2536" opacity="0.5" />
         <!-- Front range — slightly lighter, shorter -->
-        <path d="M0,400 L0,330 L80,310 L140,325 L200,290 L260,305 L320,270 L370,285 L420,250 L470,265 L530,235 L580,255 L640,220 L690,240 L740,210 L790,230 L840,200 L880,220 L930,245 L980,225 L1030,255 L1080,235 L1130,260 L1180,245 L1230,275 L1280,260 L1330,290 L1380,305 L1440,280 L1440,400 Z"
-              fill="#243347" opacity="0.45"/>
+        <path
+            d="M0,400 L0,330 L80,310 L140,325 L200,290 L260,305 L320,270 L370,285 L420,250 L470,265 L530,235 L580,255 L640,220 L690,240 L740,210 L790,230 L840,200 L880,220 L930,245 L980,225 L1030,255 L1080,235 L1130,260 L1180,245 L1230,275 L1280,260 L1330,290 L1380,305 L1440,280 L1440,400 Z"
+            fill="#243347" opacity="0.45" />
         <!-- Foreground ridge — subtle, closest -->
-        <path d="M0,400 L0,360 L100,345 L200,355 L300,335 L400,350 L500,325 L580,340 L660,315 L740,330 L820,310 L900,325 L980,340 L1060,320 L1140,338 L1220,350 L1300,335 L1380,355 L1440,340 L1440,400 Z"
-              fill="#2a3f58" opacity="0.35"/>
+        <path
+            d="M0,400 L0,360 L100,345 L200,355 L300,335 L400,350 L500,325 L580,340 L660,315 L740,330 L820,310 L900,325 L980,340 L1060,320 L1140,338 L1220,350 L1300,335 L1380,355 L1440,340 L1440,400 Z"
+            fill="#2a3f58" opacity="0.35" />
     </svg>
 
     <a href="#main-content" class="skip-link">Skip to main content</a>
