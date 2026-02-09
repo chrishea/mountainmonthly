@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mountain Monthly Obituary Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --forest: #2C3E2D;
+            --pine: #4A6741;
+            --sage: #8FA882;
+            --cream: #FAF8F5;
+            --warm-white: #FFFEF9;
+            --charcoal: #2D2D2D;
+            --muted: #6B6B6B;
+            --gold: #C4A35A;
+            --gold-light: #E8D9B5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+
+        .page {
+            width: 8.5in;
+            min-height: 11in;
+            margin: 0 auto;
+            background: var(--warm-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative mountain silhouette */
+        .mountain-bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 180px;
+            background: linear-gradient(135deg, var(--sage) 0%, var(--pine) 50%, var(--forest) 100%);
+            clip-path: polygon(0 100%, 0 60%, 15% 40%, 30% 70%, 45% 30%, 60% 55%, 75% 20%, 90% 50%, 100% 35%, 100% 100%);
+            opacity: 0.15;
+        }
+
+        /* Header */
+        .header {
+            background: var(--forest);
+            padding: 32px 48px;
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 48px;
+            right: 48px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+        }
+
+        .masthead {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--warm-white);
+            letter-spacing: 1px;
+        }
+
+        .logo-area .tagline {
+            font-size: 11px;
+            color: var(--sage);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-top: 4px;
+        }
+
+        .contact-info {
+            text-align: right;
+            color: var(--sage);
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .contact-info strong {
+            color: var(--warm-white);
+        }
+
+        /* Main content */
+        .content {
+            padding: 40px 48px 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 36px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid var(--gold-light);
+        }
+
+        .intro h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--forest);
+            margin-bottom: 12px;
+        }
+
+        .intro p {
+            font-size: 15px;
+            color: var(--muted);
+            max-width: 540px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* Pricing tiers */
+        .tiers {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 36px;
+        }
+
+        .tier {
+            background: var(--warm-white);
+            border: 1px solid #E5E2DD;
+            border-radius: 8px;
+            padding: 28px 24px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .tier:hover {
+            box-shadow: 0 8px 32px rgba(44, 62, 45, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .tier.featured {
+            border: 2px solid var(--gold);
+            background: linear-gradient(180deg, var(--warm-white) 0%, #FFFDF8 100%);
+        }
+
+        .tier.featured::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--warm-white);
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            padding: 4px 14px;
+            border-radius: 12px;
+        }
+
+        .tier-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--forest);
+            margin-bottom: 6px;
+            text-align: center;
+        }
+
+        .tier-subtitle {
+            font-size: 12px;
+            color: var(--muted);
+            text-align: center;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tier-price {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #E5E2DD;
+        }
+
+        .price-amount {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--forest);
+        }
+
+        .price-note {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        .tier-features {
+            list-style: none;
+        }
+
+        .tier-features li {
+            font-size: 13px;
+            color: var(--charcoal);
+            padding: 8px 0;
+            padding-left: 22px;
+            position: relative;
+            border-bottom: 1px solid #F0EDE8;
+        }
+
+        .tier-features li:last-child {
+            border-bottom: none;
+        }
+
+        .tier-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--pine);
+            font-weight: 600;
+        }
+
+        /* Specs section */
+        .specs {
+            background: #F8F6F3;
+            border-radius: 8px;
+            padding: 24px 28px;
+            margin-bottom: 28px;
+        }
+
+        .specs h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            color: var(--forest);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .specs h3::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--gold-light);
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px 32px;
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+        }
+
+        .spec-label {
+            color: var(--muted);
+        }
+
+        .spec-value {
+            color: var(--charcoal);
+            font-weight: 500;
+        }
+
+        /* Process section */
+        .process {
+            margin-bottom: 28px;
+        }
+
+        .process h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            color: var(--forest);
+            margin-bottom: 14px;
+        }
+
+        .process-steps {
+            display: flex;
+            gap: 16px;
+        }
+
+        .step {
+            flex: 1;
+            text-align: center;
+            padding: 16px 12px;
+            background: #F8F6F3;
+            border-radius: 6px;
+        }
+
+        .step-number {
+            width: 28px;
+            height: 28px;
+            background: var(--forest);
+            color: var(--warm-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 0 auto 10px;
+        }
+
+        .step-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 4px;
+        }
+
+        .step-desc {
+            font-size: 11px;
+            color: var(--muted);
+            line-height: 1.4;
+        }
+
+        /* Footer CTA */
+        .footer-cta {
+            text-align: center;
+            padding: 24px;
+            background: var(--forest);
+            border-radius: 8px;
+            color: var(--warm-white);
+        }
+
+        .footer-cta h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .footer-cta p {
+            font-size: 13px;
+            color: var(--sage);
+            margin-bottom: 12px;
+        }
+
+        .contact-line {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .contact-line a {
+            color: var(--gold-light);
+            text-decoration: none;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+            }
+            .page {
+                box-shadow: none;
+                margin: 0;
+            }
+            .tier:hover {
+                transform: none;
+                box-shadow: none;
+            }
+        }
+
+        @media screen {
+            body {
+                padding: 20px;
+                background: #E8E4DF;
+            }
+            .page {
+                box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="mountain-bg"></div>
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mountain Monthly Obituary Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --forest: #2C3E2D;
+            --pine: #4A6741;
+            --sage: #8FA882;
+            --cream: #FAF8F5;
+            --warm-white: #FFFEF9;
+            --charcoal: #2D2D2D;
+            --muted: #6B6B6B;
+            --gold: #C4A35A;
+            --gold-light: #E8D9B5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+
+        .page {
+            width: 8.5in;
+            min-height: 11in;
+            margin: 0 auto;
+            background: var(--warm-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative mountain silhouette */
+        .mountain-bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 180px;
+            background: linear-gradient(135deg, var(--sage) 0%, var(--pine) 50%, var(--forest) 100%);
+            clip-path: polygon(0 100%, 0 60%, 15% 40%, 30% 70%, 45% 30%, 60% 55%, 75% 20%, 90% 50%, 100% 35%, 100% 100%);
+            opacity: 0.15;
+        }
+
+        /* Header */
+        .header {
+            background: var(--forest);
+            padding: 32px 48px;
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 48px;
+            right: 48px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+        }
+
+        .masthead {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--warm-white);
+            letter-spacing: 1px;
+        }
+
+        .logo-area .tagline {
+            font-size: 11px;
+            color: var(--sage);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-top: 4px;
+        }
+
+        .contact-info {
+            text-align: right;
+            color: var(--sage);
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .contact-info strong {
+            color: var(--warm-white);
+        }
+
+        /* Main content */
+        .content {
+            padding: 40px 48px 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 36px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid var(--gold-light);
+        }
+
+        .intro h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--forest);
+            margin-bottom: 12px;
+        }
+
+        .intro p {
+            font-size: 15px;
+            color: var(--muted);
+            max-width: 540px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* Pricing tiers */
+        .tiers {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 36px;
+        }
+
+        .tier {
+            background: var(--warm-white);
+            border: 1px solid #E5E2DD;
+            border-radius: 8px;
+            padding: 28px 24px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .tier:hover {
+            box-shadow: 0 8px 32px rgba(44, 62, 45, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .tier.featured {
+            border: 2px solid var(--gold);
+            background: linear-gradient(180deg, var(--warm-white) 0%, #FFFDF8 100%);
+        }
+
+        .tier.featured::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--warm-white);
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            padding: 4px 14px;
+            border-radius: 12px;
+        }
+
+        .tier-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--forest);
+            margin-bottom: 6px;
+            text-align: center;
+        }
+
+        .tier-subtitle {
+            font-size: 12px;
+            color: var(--muted);
+            text-align: center;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tier-price {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #E5E2DD;
+        }
+
+        .price-amount {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--forest);
+        }
+
+        .price-note {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        .tier-features {
+            list-style: none;
+        }
+
+        .tier-features li {
+            font-size: 13px;
+            color: var(--charcoal);
+            padding: 8px 0;
+            padding-left: 22px;
+            position: relative;
+            border-bottom: 1px solid #F0EDE8;
+        }
+
+        .tier-features li:last-child {
+            border-bottom: none;
+        }
+
+        .tier-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--pine);
+            font-weight: 600;
+        }
+
+        /* Specs section */
+        .specs {
+            background: #F8F6F3;
+            border-radius: 8px;
+            padding: 24px 28px;
+            margin-bottom: 28px;
+        }
+
+        .specs h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            color: var(--forest);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .specs h3::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--gold-light);
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px 32px;
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+        }
+
+        .spec-label {
+            color: var(--muted);
+        }
+
+        .spec-value {
+            color: var(--charcoal);
+            font-weight: 500;
+        }
+
+        /* Process section */
+        .process {
+            margin-bottom: 28px;
+        }
+
+        .process h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            color: var(--forest);
+            margin-bottom: 14px;
+        }
+
+        .process-steps {
+            display: flex;
+            gap: 16px;
+        }
+
+        .step {
+            flex: 1;
+            text-align: center;
+            padding: 16px 12px;
+            background: #F8F6F3;
+            border-radius: 6px;
+        }
+
+        .step-number {
+            width: 28px;
+            height: 28px;
+            background: var(--forest);
+            color: var(--warm-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 0 auto 10px;
+        }
+
+        .step-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 4px;
+        }
+
+        .step-desc {
+            font-size: 11px;
+            color: var(--muted);
+            line-height: 1.4;
+        }
+
+        /* Footer CTA */
+        .footer-cta {
+            text-align: center;
+            padding: 24px;
+            background: var(--forest);
+            border-radius: 8px;
+            color: var(--warm-white);
+        }
+
+        .footer-cta h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .footer-cta p {
+            font-size: 13px;
+            color: var(--sage);
+            margin-bottom: 12px;
+        }
+
+        .contact-line {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .contact-line a {
+            color: var(--gold-light);
+            text-decoration: none;
+        }
+
+          /* Navigation Bar */
+        nav {
+            background-color: var(--dark-green);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--accent-green);
+        }
+
+        nav .logo {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        nav .logo:hover {
+            color: #90EE90;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav .nav-links a:hover {
+            background-color: var(--medium-green);
+        }
+
+        nav .nav-links a.active {
+            background-color: var(--accent-green);
+        }
+
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+            }
+            .page {
+                box-shadow: none;
+                margin: 0;
+            }
+            .tier:hover {
+                transform: none;
+                box-shadow: none;
+            }
+        }
+
+        @media screen {
+            body {
+                padding: 20px;
+                background: #E8E4DF;
+            }
+            .page {
+                box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="mountain-bg"></div>
+            <nav>
+        <a href="#" class="logo">Mountain Monthly</a>
+        <div class="nav-links">
+            <a href="https://mountainmonthly.com/MM-Rate-Card.html">Rates</a>
+            <a href="#" class="active">Specs</a>
+        </div>
+    </nav>
+        <header class="header">
+            <div class="masthead">
+                <div class="logo-area">
+                    <h1>Mountain Monthly</h1>
+                    <div class="tagline">Serving the Sacramento Mountains Since 1985</div>
+                </div>
+                <div class="contact-info">
+                    <strong>Obituary Services</strong><br>
+                    obits@mountainmonthly.com<br>
+                    (575) 682-2010
+                </div>
+            </div>
+        </header>
+
+        <main class="content">
+            <div class="intro">
+                <h2>Honoring Lives, Preserving Legacies</h2>
+                <p>Share the story of your loved one with our mountain community. Our obituary services provide a dignified tribute that reaches neighbors, friends, and family throughout the Sacramento Mountains.</p>
+            </div>
+
+            <div class="tiers">
+                <div class="tier">
+                    <div class="tier-name">Essential</div>
+                    <div class="tier-subtitle">Text Only</div>
+                    <div class="tier-price">
+                        <div class="price-amount">$75</div>
+                        <div class="price-note">Up to 250 words</div>
+                    </div>
+                    <ul class="tier-features">
+                        <li>Published in print edition</li>
+                        <li>Online archive listing</li>
+                        <li>Basic formatting included</li>
+                        <li>Copy editing assistance</li>
+                        <li>$0.30 per additional word</li>
+                    </ul>
+                </div>
+
+                <div class="tier featured">
+                    <div class="tier-name">Tribute</div>
+                    <div class="tier-subtitle">Text + Photo</div>
+                    <div class="tier-price">
+                        <div class="price-amount">$125</div>
+                        <div class="price-note">Up to 350 words</div>
+                    </div>
+                    <ul class="tier-features">
+                        <li>Published in print edition</li>
+                        <li>One portrait photo included</li>
+                        <li>Featured online placement</li>
+                        <li>Photo restoration available</li>
+                        <li>$0.30 per additional word</li>
+                    </ul>
+                </div>
+
+                <div class="tier">
+                    <div class="tier-name">Legacy</div>
+                    <div class="tier-subtitle">Text + Photo XL</div>
+                    <div class="tier-price">
+                        <div class="price-amount">$195</div>
+                        <div class="price-note">Up to 500 words</div>
+                    </div>
+                    <ul class="tier-features">
+                        <li>Half-page print placement</li>
+                        <li>Large photo display</li>
+                        <li>Up to 3 photos included</li>
+                        <li>Premium online feature</li>
+                        <li>$0.25 per additional word</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="specs">
+                <h3>Specifications & Guidelines</h3>
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <span class="spec-label">Print Deadline</span>
+                        <span class="spec-value">Wednesday, 5 PM</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Photo Format</span>
+                        <span class="spec-value">JPEG, 300 DPI minimum</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Publication Day</span>
+                        <span class="spec-value">First of each month</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Rush Service</span>
+                        <span class="spec-value">+$25 (24-hr turnaround)</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Online Duration</span>
+                        <span class="spec-value">Permanent archive</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Extra Print Copies</span>
+                        <span class="spec-value">$3 each (bulk available)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process">
+                <h3>How It Works</h3>
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Submit</div>
+                        <div class="step-desc">Email text and photos to our obituary desk</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Review</div>
+                        <div class="step-desc">We'll format and send a proof within 24 hours</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Approve</div>
+                        <div class="step-desc">Confirm details and complete payment</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-title">Publish</div>
+                        <div class="step-desc">Tribute appears in print and online</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-cta">
+                <h3>We're Here to Help</h3>
+                <p>Our team understands this is a difficult time. We're available to assist with writing, photo selection, and any questions you may have.</p>
+                <div class="contact-line">
+                    <a href="mailto:obits@mountainmonthly.com">obits@mountainmonthly.com</a> · (575) 682-2010
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
+
+        <header class="header">
+            <div class="masthead">
+                <div class="logo-area">
+                    <h1>Mountain Monthly</h1>
+                    <div class="tagline">Serving the Sacramento Mountains Since 1985</div>
+                </div>
+                <div class="contact-info">
+                    <strong>Obituary Services</strong><br>
+                    obits@mountainmonthly.com<br>
+                    (575) 682-2010
+                </div>
+            </div>
+        </header>
+
+        <main class="content">
+            <div class="intro">
+                <h2>Honoring Lives, Preserving Legacies</h2>
+                <p>Share the story of your loved one with our mountain community. Our obituary services provide a dignified tribute that reaches neighbors, friends, and family throughout the Sacramento Mountains.</p>
+            </div>
+
+            <div class="tiers">
+                <div class="tier">
+                    <div class="tier-name">Essential</div>
+                    <div class="tier-subtitle">Text Only</div>
+                    <div class="tier-price">
+                        <div class="price-amount">$75</div>
+                        <div class="price-note">Up to 250 words</div>
+                    </div>
+                    <ul class="tier-features">
+                        <li>Published in print edition</li>
+                        <li>Online archive listing</li>
+                        <li>Basic formatting included</li>
+                        <li>Copy editing assistance</li>
+                        <li>$0.30 per additional word</li>
+                    </ul>
+                </div>
+
+                <div class="tier featured">
+                    <div class="tier-name">Tribute</div>
+                    <div class="tier-subtitle">Text + Photo</div>
+                    <div class="tier-price">
+                        <div class="price-amount">$125</div>
+                        <div class="price-note">Up to 350 words</div>
+                    </div>
+                    <ul class="tier-features">
+                        <li>Published in print edition</li>
+                        <li>One portrait photo included</li>
+                        <li>Featured online placement</li>
+                        <li>Photo restoration available</li>
+                        <li>$0.30 per additional word</li>
+                    </ul>
+                </div>
+
+                <div class="tier">
+                    <div class="tier-name">Legacy</div>
+                    <div class="tier-subtitle">Text + Photo XL</div>
+                    <div class="tier-price">
+                        <div class="price-amount">$195</div>
+                        <div class="price-note">Up to 500 words</div>
+                    </div>
+                    <ul class="tier-features">
+                        <li>Half-page print placement</li>
+                        <li>Large photo display</li>
+                        <li>Up to 3 photos included</li>
+                        <li>Premium online feature</li>
+                        <li>$0.25 per additional word</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="specs">
+                <h3>Specifications & Guidelines</h3>
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <span class="spec-label">Print Deadline</span>
+                        <span class="spec-value">Wednesday, 5 PM</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Photo Format</span>
+                        <span class="spec-value">JPEG, 300 DPI minimum</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Publication Day</span>
+                        <span class="spec-value">First of each month</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Rush Service</span>
+                        <span class="spec-value">+$25 (24-hr turnaround)</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Online Duration</span>
+                        <span class="spec-value">Permanent archive</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">Extra Print Copies</span>
+                        <span class="spec-value">$3 each (bulk available)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process">
+                <h3>How It Works</h3>
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Submit</div>
+                        <div class="step-desc">Email text and photos to our obituary desk</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Review</div>
+                        <div class="step-desc">We'll format and send a proof within 24 hours</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Approve</div>
+                        <div class="step-desc">Confirm details and complete payment</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-title">Publish</div>
+                        <div class="step-desc">Tribute appears in print and online</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-cta">
+                <h3>We're Here to Help</h3>
+                <p>Our team understands this is a difficult time. We're available to assist with writing, photo selection, and any questions you may have.</p>
+                <div class="contact-line">
+                    <a href="mailto:obits@mountainmonthly.com">obits@mountainmonthly.com</a> · (575) 682-2010
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

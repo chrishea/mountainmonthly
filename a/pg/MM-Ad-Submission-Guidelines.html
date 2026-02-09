@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad Submission Guidelines | Mountain Monthly</title>
+    <style>
+        :root {
+            --dark-green: #1a472a;
+            --medium-green: #2d5a3d;
+            --light-green: #3d7a52;
+            --accent-green: #4a9960;
+            --cream: #f5f5f0;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--cream);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--dark-green);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .intro {
+            background-color: var(--medium-green);
+            color: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        section {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid var(--dark-green);
+        }
+
+        section h2 {
+            color: var(--dark-green);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-green);
+        }
+
+        section h3 {
+            color: var(--medium-green);
+            font-size: 1.2rem;
+            margin: 1.5rem 0 0.75rem 0;
+        }
+
+        section h3:first-of-type {
+            margin-top: 0.5rem;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            padding: 0.5rem 0 0.5rem 1.5rem;
+            position: relative;
+        }
+
+        ul li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.85rem;
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+        }
+
+        .specs {
+            background-color: var(--cream);
+            padding: 0.75rem 1rem;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            margin-left: 1.5rem;
+        }
+
+        .specs p {
+            margin: 0.25rem 0;
+            font-weight: 500;
+        }
+
+        .highlight {
+            background-color: #e8f5e9;
+            border: 1px solid var(--accent-green);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+
+        .final-delivery {
+            background-color: var(--dark-green);
+            color: var(--white);
+            border-left-color: var(--accent-green);
+        }
+
+        .final-delivery h2 {
+            color: var(--white);
+            border-bottom-color: var(--accent-green);
+        }
+
+        .final-delivery p {
+            font-size: 1.1rem;
+        }
+
+        footer {
+            background-color: var(--dark-green);
+            color: var(--white);
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: whitesmoke;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--accent-green);
+        }
+
+        nav .logo {
+            color: var(--darkgreen);
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        nav .logo:hover {
+            color: #90EE90;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav .nav-links a:hover {
+            background-color: var(--medium-green);
+        }
+
+        nav .nav-links a.active {
+            background-color: var(--accent-green);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">Mountain Monthly</a>
+        <div class="nav-links">
+            <a href="https://mountainmonthly.com/MM-Rate-Card.html">Rates</a>
+            <a href="#" class="active">Specs</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Mountain Monthly</h1>
+        <p>Technical Requirements for Ad Submission</p>
+    </header>
+
+    <div class="container">
+        <div class="intro">
+            Please review and follow the guidelines below when sending files:
+        </div>
+
+        <section>
+            <h2>Color &amp; Black Usage</h2>
+            <ul>
+                <li>All color artwork and photos must be set to <strong>CMYK</strong> (not RGB).</li>
+                <li>All text should be <strong>100% Black (K only)</strong> — do not use rich black or CMYK black for text. This helps prevent readability and registration issues.</li>
+                <li>Logos or photos intended to appear grayscale should be set to <strong>Grayscale</strong>, not CMYK.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Basic Pre-Press Production Checks</h2>
+
+            <h3>1. Document Setup</h3>
+            <ul>
+                <li>Ensure the document size matches the final printed size.</li>
+                <li>Confirm the color mode is CMYK.</li>
+                <li>Check image and graphic resolution (typically 300 dpi for print).</li>
+                <li>Verify that black text and solid black elements are set to 100% K only.</li>
+            </ul>
+
+            <h3>2. Color Check</h3>
+            <ul>
+                <li>Review color consistency throughout the document.</li>
+                <li>Check for spot colors or special inks and convert them to CMYK or 100% Black, if applicable.</li>
+            </ul>
+
+            <h3>3. Font Check</h3>
+            <ul>
+                <li>Ensure all fonts are embedded or outlined.</li>
+            </ul>
+
+            <h3>4. Image Check</h3>
+            <ul>
+                <li>Confirm all linked images are properly placed and high resolution.</li>
+            </ul>
+            <div class="specs">
+                <p>Maximum: 300 dpi</p>
+                <p>Minimum: 200 dpi</p>
+            </div>
+        </section>
+
+        <section class="final-delivery">
+            <h2>Final File Delivery</h2>
+            <p>Please save and submit files as a <strong>high-resolution PDF</strong>.</p>
+            <p>Send file to <a href="mailto:submit-ad@mountainmonthly.com" style="color: #90EE90;">submit-ad@mountainmonthly.com</a></p>
+        </section>
+    </div>
+
+    <footer>
+        <p>Mountain Monthly — Ad Submission Guidelines</p>
+    </footer>
+</body>
+</html>

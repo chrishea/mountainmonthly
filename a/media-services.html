@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Services | Mountain Monthly</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #0077b6;
+            --accent-blue: #00a8e8;
+            --light-blue: #e6f4fa;
+            --dark-text: #1a1a1a;
+            --medium-text: #555;
+            --light-text: #777;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #f8fbfd 0%, #e6f4fa 100%);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-family: 'IBM Plex Serif', Georgia, serif;
+            font-size: 2.75rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.5px;
+        }
+
+        .hero h2 {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero .subtitle {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        .logos {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .logos img {
+            max-width: 150px;
+            height: auto;
+            opacity: 1;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            cursor: pointer;
+        }
+
+        .logos img:hover {
+            transform: scale(1.1);
+            opacity: 0.7;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .link-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: var(--dark-text);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .link-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 119, 182, 0.15);
+            border-color: var(--accent-blue);
+        }
+
+        .link-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-blue);
+        }
+
+        .link-card p {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            line-height: 1.5;
+        }
+
+        /* Navigation Bar */
+        nav.top-nav {
+            width: 100%;
+            background-color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        nav.top-nav .logo {
+            color: var(--primary-blue);
+            font-size: 1.25rem;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        nav.top-nav .logo:hover {
+            color: var(--accent-blue);
+        }
+
+        nav.top-nav .nav-links {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        nav.top-nav .nav-links a {
+            color: var(--medium-text);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        nav.top-nav .nav-links a:hover {
+            background-color: var(--light-blue);
+            color: var(--primary-blue);
+        }
+
+        nav.top-nav .nav-links a.active {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary-blue);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            nav.top-nav .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                left: 0;
+                background-color: white;
+                flex-direction: column;
+                width: 100%;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                gap: 0;
+                z-index: 100;
+            }
+
+            nav.top-nav .nav-links.active {
+                display: flex;
+            }
+
+            nav.top-nav .nav-links a {
+                padding: 1rem 2rem;
+                border-bottom: 1px solid #eee;
+                border-radius: 0;
+            }
+
+            nav.top-nav {
+                position: relative;
+            }
+
+            .hero {
+                padding: 3rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .logos img {
+                max-width: 63px;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <a href="#" class="logo">Mountain Monthly</a>
+        <div class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-links">
+            <a href="https://mountainmonthly.com/MM-Rate-Card.html">Rates</a>
+            <a href="p/MM-Ad-Rates-2026.html" class="active">Ad Rates</a>
+            <a href="p/MM-Ad-Submission-Guidelines.html">Specs</a>
+            <a href="p/digital-cards.html">Digital Cards</a>
+            <a href="p/direct-connect.html">Direct Connect</a>
+            <a href="p/mm-ad-obits.html">Ad Obits</a>
+            <a href="p/mountain-monthly-leave-behind.html">Leave Behind</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="logos">
+            <img src="media/logo-cr-sticker-black.png" alt="Cloudcroft Reader logo">
+            <img src="media/logo-mm-elk-circle.png" alt="Mountain Monthly logo">
+         
+        </div>
+        <h1>We Connect the Community</h1>
+        <h2>Print. Email. Web. Social Media. Reels</h2>
+    </section>
+
+    <div class="container">
+        <div class="links-grid">
+            <a href="#" class="link-card">
+                <h3>Information</h3>
+                <p>Learn about our media services and reach</p>
+            </a>
+            <a href="https://www.mountainmonthly.com/a/p/MM-Ad-Rates-2026.html" class="link-card">
+                <h3>Rates</h3>
+                <p>View our current advertising rates</p>
+            </a>
+            <a href="https://www.mountainmonthly.com/a/p/MM-Ad-Submission-Guidelines.html" class="link-card">
+                <h3>Specs</h3>
+                <p>Ad submission guidelines and requirements</p>
+            </a>
+            <a href="https://www.mountainmonthly.com/a/p/mm-ad-obits.html" class="link-card">
+                <h3>Obituaries</h3>
+                <p>Memorial and obituary ad information</p>
+            </a>
+            <a href="https://www.mountainmonthly.com/a/p/direct-connect.html" class="link-card">
+                <h3>Direct Connect</h3>
+                <p>Direct advertising solutions</p>
+            </a>
+            <a href="#" class="link-card">
+                <h3>Contact</h3>
+                <p>Get in touch with our team</p>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

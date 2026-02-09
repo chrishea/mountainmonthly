@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advertiser Information</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .summary {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 1.5em;
+        }
+
+        .summary span {
+            font-weight: bold;
+            color: #2ecc71;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .card-header {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .card-header h2 {
+            color: #2c3e50;
+            font-size: 1.2em;
+        }
+
+        .card-header .company {
+            color: #7f8c8d;
+            font-size: 0.95em;
+            margin-top: 5px;
+        }
+
+        .address {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .detail-item {
+            background: #ecf0f1;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .detail-item label {
+            display: block;
+            font-size: 0.75em;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            margin-bottom: 3px;
+        }
+
+        .detail-item value {
+            display: block;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .notes {
+            grid-column: 1 / -1;
+            background: #fff9e6;
+            border-left: 3px solid #f1c40f;
+        }
+
+        .total {
+            background: #e8f6e8;
+            border-left: 3px solid #2ecc71;
+        }
+
+        .total value {
+            color: #27ae60;
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 600px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .details {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Advertiser Directory</h1>
+
+    <div class="summary">
+        Total Revenue: <span>$1,020</span>
+    </div>
+
+    <div class="grid">
+        <!-- Adam Nieto -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Adam Nieto</h2>
+            </div>
+            <div class="address">
+                12720 Hillcrest Road, Suite 785<br>
+                Dallas, TX 75230
+            </div>
+            <div class="details">
+                <div class="detail-item">
+                    <label>Ad Size</label>
+                    <value>Sig</value>
+                </div>
+                <div class="detail-item">
+                    <label>Per Ad</label>
+                    <value>$20</value>
+                </div>
+                <div class="detail-item">
+                    <label># Insertions</label>
+                    <value>1</value>
+                </div>
+                <div class="detail-item total">
+                    <label>Total</label>
+                    <value>$20</value>
+                </div>
+                <div class="detail-item notes">
+                    <label>Notes</label>
+                    <value>Prepaid - Last ad</value>
+                </div>
+            </div>
+        </div>
+
+        <!-- Denise Lossette -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Denise Lossette</h2>
+                <div class="company">Big Daddy's Diner</div>
+            </div>
+            <div class="address">
+                P.O. Box 1143<br>
+                Cloudcroft, NM 88317
+            </div>
+            <div class="details">
+                <div class="detail-item">
+                    <label>Ad Size</label>
+                    <value>1/8</value>
+                </div>
+                <div class="detail-item">
+                    <label>Per Ad</label>
+                    <value>$60</value>
+                </div>
+                <div class="detail-item">
+                    <label># Insertions</label>
+                    <value>1</value>
+                </div>
+                <div class="detail-item total">
+                    <label>Total</label>
+                    <value>$60</value>
+                </div>
+                <div class="detail-item notes">
+                    <label>Notes</label>
+                    <value>Prepaid for Nov prior to Sale</value>
+                </div>
+            </div>
+        </div>
+
+        <!-- Debbie Ferdetta -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Debbie Ferdetta</h2>
+                <div class="company">Advanced Septic Pros (a Quest 4 company)</div>
+            </div>
+            <div class="address">
+                P.O. Box 1163<br>
+                Cloudcroft, NM 88317
+            </div>
+            <div class="details">
+                <div class="detail-item">
+                    <label>Ad Size</label>
+                    <value>1/4 Color</value>
+                </div>
+                <div class="detail-item">
+                    <label>Per Ad</label>
+                    <value>$160</value>
+                </div>
+                <div class="detail-item">
+                    <label># Insertions</label>
+                    <value>2</value>
+                </div>
+                <div class="detail-item total">
+                    <label>Total</label>
+                    <value>$320</value>
+                </div>
+                <div class="detail-item notes">
+                    <label>Notes</label>
+                    <value>Prepaid Nov & Dec prior to Sale</value>
+                </div>
+            </div>
+        </div>
+
+        <!-- Robin Faux -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Robin Faux</h2>
+                <div class="company">Cloudcroft Therapeutic Massage</div>
+            </div>
+            <div class="address">
+                174 Trading Post Road<br>
+                Cloudcroft, NM 88317
+            </div>
+            <div class="details">
+                <div class="detail-item">
+                    <label>Ad Size</label>
+                    <value>1/8</value>
+                </div>
+                <div class="detail-item">
+                    <label>Per Ad</label>
+                    <value>$60</value>
+                </div>
+                <div class="detail-item">
+                    <label># Insertions</label>
+                    <value>2</value>
+                </div>
+                <div class="detail-item total">
+                    <label>Total</label>
+                    <value>$120</value>
+                </div>
+                <div class="detail-item notes">
+                    <label>Notes</label>
+                    <value>Prepaid Nov & Dec prior to Sale</value>
+                </div>
+            </div>
+        </div>
+
+        <!-- Neila Farmer -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Neila Farmer, BOD members</h2>
+                <div class="company">Sacramento Mountains Museum</div>
+            </div>
+            <div class="address">
+                P.O. Box 435<br>
+                Cloudcroft, NM 88317
+            </div>
+            <div class="details">
+                <div class="detail-item">
+                    <label>Ad Size</label>
+                    <value>COMP + Color</value>
+                </div>
+                <div class="detail-item">
+                    <label>Per Ad</label>
+                    <value>$30</value>
+                </div>
+                <div class="detail-item">
+                    <label># Insertions</label>
+                    <value>2</value>
+                </div>
+                <div class="detail-item total">
+                    <label>Total</label>
+                    <value>$60</value>
+                </div>
+                <div class="detail-item notes">
+                    <label>Notes</label>
+                    <value>Prepaid through Dec</value>
+                </div>
+            </div>
+        </div>
+
+        <!-- Caroline Boles -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Caroline Boles</h2>
+                <div class="company">USA Insurance</div>
+            </div>
+            <div class="address">
+                3310 N. White Sands Blvd.<br>
+                Alamogordo, NM 88310
+            </div>
+            <div class="details">
+                <div class="detail-item">
+                    <label>Ad Size</label>
+                    <value>1/20</value>
+                </div>
+                <div class="detail-item">
+                    <label>Per Ad</label>
+                    <value>$30</value>
+                </div>
+                <div class="detail-item">
+                    <label># Insertions</label>
+                    <value>2</value>
+                </div>
+                <div class="detail-item total">
+                    <label>Total</label>
+                    <value>$60</value>
+                </div>
+                <div class="detail-item notes">
+                    <label>Notes</label>
+                    <value>Prepaid through Dec</value>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dave Swope -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Dave Swope</h2>
+                <div class="company">Swope Excavation</div>
+            </div>
+            <div class="address">
+                840 Cox Canyon<br>
+                Cloudcroft, NM 88317
+            </div>
+            <div class="details">
+                <div class="detail-item">
+                    <label>Ad Size</label>
+                    <value>Sig</value>
+                </div>
+                <div class="detail-item">
+                    <label>Per Ad</label>
+                    <value>$20</value>
+                </div>
+                <div class="detail-item">
+                    <label># Insertions</label>
+                    <value>2</value>
+                </div>
+                <div class="detail-item total">
+                    <label>Total</label>
+                    <value>$40</value>
+                </div>
+                <div class="detail-item notes">
+                    <label>Notes</label>
+                    <value>Prepaid through Dec</value>
+                </div>
+            </div>
+        </div>
+
+        <!-- Steve Connor -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Steve Connor</h2>
+                <div class="company">STC Outfitting</div>
+            </div>
+            <div class="address">
+                P.O. Box 396<br>
+                Cloudcroft, NM 88317
+            </div>
+            <div class="details">
+                <div class="detail-item">
+                    <label>Ad Size</label>
+                    <value>Sig</value>
+                </div>
+                <div class="detail-item">
+                    <label>Per Ad</label>
+                    <value>$20</value>
+                </div>
+                <div class="detail-item">
+                    <label># Insertions</label>
+                    <value>3</value>
+                </div>
+                <div class="detail-item total">
+                    <label>Total</label>
+                    <value>$60</value>
+                </div>
+                <div class="detail-item notes">
+                    <label>Notes</label>
+                    <value>Prepaid through Jan 2026</value>
+                </div>
+            </div>
+        </div>
+
+        <!-- Susan Difani -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Susan Difani</h2>
+                <div class="company">The Elk Shed</div>
+            </div>
+            <div class="address">
+                P.O. Box 706<br>
+                505 Burro Ave #109<br>
+                Cloudcroft, NM 88317
+            </div>
+            <div class="details">
+                <div class="detail-item">
+                    <label>Ad Size</label>
+                    <value>1/16</value>
+                </div>
+                <div class="detail-item">
+                    <label>Per Ad</label>
+                    <value>$35</value>
+                </div>
+                <div class="detail-item">
+                    <label># Insertions</label>
+                    <value>8</value>
+                </div>
+                <div class="detail-item total">
+                    <label>Total</label>
+                    <value>$280</value>
+                </div>
+                <div class="detail-item notes">
+                    <label>Notes</label>
+                    <value>Prepaid through June 2026</value>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Services Packages</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #e67e22;
+            --text-color: #333;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans','Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Grid Layout */
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        /* Image Container with specific aspect ratio */
+        .card-image {
+            width: 100%;
+            /* Height is 65% of width */
+            padding-top: 65%; 
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        .card-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-family:'ibm plex serif', serif;
+            color: var(--primary-color);
+            margin: 0 0 15px 0;
+            font-weight: 700;
+        }
+
+        .card-description {
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .card-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+
+        .card-features li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .card-features li::before {
+            content: "•";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .price-tag {
+            font-weight: bold;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .cta-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: background-color 0.2s;
+        }
+
+        .cta-button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .package-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .card-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Media Services & Advertising</h1>
+        <p class="subtitle">Comprehensive solutions for Mountain Monthly and Cloudcroft Reader. Reach our engaged community through print, digital, and social channels.</p>
+    </header>
+
+    <div class="package-grid">
+        
+        <!-- Card 1: Print Advertising -->
+        <div class="card">
+            <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1562619425-c307bb83bc42?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+            <div class="card-content">
+                <h2 class="card-title">Print Advertising</h2>
+                <div class="card-description">
+                    <p>Traditional reach through the Mountain Monthly. Perfect for local businesses wanting tangible visibility.</p>
+                    <ul class="card-features">
+                        <li>Text Only, Text + Photo, or Extra Large options</li>
+                        <li>Premium back cover placement available</li>
+                        <li><strong>Bonus:</strong> Free QR code & landing page creation</li>
+                    </ul>
+                </div>
+                <div class="price-tag">Packages start at $100</div>
+                <a href="#" class="cta-button">View Rate Card</a>
+            </div>
+        </div>
+
+        <!-- Card 2: Social Media Package -->
+        <div class="card">
+            <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+            <div class="card-content">
+                <h2 class="card-title">Social Media & Digital</h2>
+                <div class="card-description">
+                    <p>High-impact digital campaigns across our 20,000+ follower network. Ideal for events and immediate action.</p>
+                    <ul class="card-features">
+                        <li>Event promotion campaigns (3-4 posts/week)</li>
+                        <li>Sponsored Reels & video storytelling</li>
+                        <li>Cross-posting to Reader & Monthly feeds</li>
+                    </ul>
+                </div>
+                <div class="price-tag">Campaigns from $100 - $400</div>
+                <a href="#" class="cta-button">Start Campaign</a>
+            </div>
+        </div>
+
+        <!-- Card 3: Business Sponsorship -->
+        <div class="card">
+            <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+            <div class="card-content">
+                <h2 class="card-title">Reader Sponsorship</h2>
+                <div class="card-description">
+                    <p>Deep integration into the Cloudcroft Reader community. Position your brand as a key local supporter.</p>
+                    <ul class="card-features">
+                        <li>Inclusion in "Wednesday Review" & articles</li>
+                        <li>Email newsletter placement</li>
+                        <li>Community group visibility via news sharing</li>
+                    </ul>
+                </div>
+                <div class="price-tag">Monthly Subscription</div>
+                <a href="#" class="cta-button">Become a Sponsor</a>
+            </div>
+        </div>
+
+        <!-- Card 4: Bundled Solutions -->
+        <div class="card">
+            <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+            <div class="card-content">
+                <h2 class="card-title">Bundled Solutions</h2>
+                <div class="card-description">
+                    <p>Maximize your reach by combining platforms or securing long-term placement.</p>
+                    <ul class="card-features">
+                        <li><strong>Quarterly Package:</strong> 4-5 placements over 3 months</li>
+                        <li><strong>Cross-Platform:</strong> Combine Print + Social</li>
+                        <li>10% Discount on bundled services</li>
+                    </ul>
+                </div>
+                <div class="price-tag">Custom Pricing (10% Off)</div>
+                <a href="#" class="cta-button">Get a Quote</a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
+```

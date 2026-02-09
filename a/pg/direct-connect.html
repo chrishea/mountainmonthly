@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Mountain Monthly Direct Connect - Connect your print ads to customers online with a snap of a QR code.">
+    <meta name="theme-color" content="#005838">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Direct Connect | Mountain Monthly</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== CSS Custom Properties ===== */
+        :root {
+            --color-primary: #2d5016;
+            --color-primary-dark: #1a4d2e;
+            --color-accent: #f7c948;
+            --color-accent-dark: #e5b832;
+            --color-text-dark: #1a202c;
+            --color-text-medium: #2d3748;
+            --color-text-light: #718096;
+            --color-border: #e2e8f0;
+            --color-background: #f7fafc;
+            --color-white: #ffffff;
+            --color-newspaper: #faf8f5;
+
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+
+            --font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+            /* Safe area insets for notched phones */
+            --safe-top: env(safe-area-inset-top, 0px);
+            --safe-bottom: env(safe-area-inset-bottom, 0px);
+        }
+
+        /* ===== Cool-Forest Theme ===== */
+        .theme-cool-forest {
+            --color-primary: #005838;
+            --color-primary-dark: #003d26;
+            --color-accent: #FFD51D;
+            --color-accent-dark: #e6c01a;
+            --color-secondary: #6A5147;
+            --color-text-dark: #2d2926;
+            --color-text-medium: #4a4340;
+            --color-text-light: #6A5147;
+            --color-border: #d4c9c3;
+            --color-background: #F4E1BE;
+            --color-white: #ffffff;
+            --color-newspaper: #faf6f0;
+        }
+
+        /* ===== Reset & Base Styles ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background: var(--color-background);
+            min-height: 100vh;
+            min-height: 100dvh;
+            color: var(--color-text-dark);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ===== Header ===== */
+        .header {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: calc(16px + var(--safe-top)) 16px 16px;
+            text-align: center;
+        }
+
+        .logo {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            opacity: 0.9;
+        }
+
+        .header h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .header-tagline {
+            font-size: 1rem;
+            opacity: 0.95;
+            font-weight: 400;
+        }
+
+        /* ===== Hero Section ===== */
+        .hero {
+            text-align: center;
+            padding: 24px 16px 20px;
+        }
+
+        .hero h2 {
+            font-size: 1.25rem;
+            color: var(--color-primary);
+            margin-bottom: 12px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .hero p {
+            font-size: 0.95rem;
+            color: var(--color-text-medium);
+            line-height: 1.5;
+        }
+
+        .snap-badge {
+            display: inline-block;
+            background: var(--color-accent);
+            color: var(--color-text-dark);
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-top: 16px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* ===== Steps Container ===== */
+        .steps-container {
+            padding: 16px 12px 32px;
+        }
+
+        .steps-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* ===== Step Box ===== */
+        .step-box {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: 24px 16px 20px;
+            text-align: center;
+            position: relative;
+            margin-top: 16px;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-primary);
+            color: var(--color-white);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .step-illustration {
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .step-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--color-text-dark);
+            margin-bottom: 6px;
+        }
+
+        .step-description {
+            font-size: 0.875rem;
+            color: var(--color-text-light);
+            line-height: 1.45;
+        }
+
+        /* ===== Arrow Connectors - Hidden on mobile ===== */
+        .arrow-connector {
+            display: none;
+        }
+
+        /* ===== Illustration Styles ===== */
+
+        /* Step 1: Newspaper with QR */
+        .newspaper {
+            width: 120px;
+            height: 135px;
+            background: var(--color-newspaper);
+            border: 2px solid #d4d0c8;
+            border-radius: 4px;
+            padding: 10px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .newspaper-header {
+            font-size: 7px;
+            font-weight: 700;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 3px;
+            margin-bottom: 6px;
+            color: #333;
+            letter-spacing: 0.5px;
+        }
+
+        .newspaper-content {
+            display: flex;
+            gap: 6px;
+        }
+
+        .newspaper-text {
+            flex: 1;
+        }
+
+        .text-line {
+            height: 2px;
+            background: #ccc;
+            margin-bottom: 3px;
+            border-radius: 1px;
+        }
+
+        .text-line:nth-child(odd) { width: 100%; }
+        .text-line:nth-child(even) { width: 75%; }
+
+        .newspaper-ad {
+            width: 42px;
+            background: #fff;
+            border: 2px solid var(--color-primary);
+            border-radius: 3px;
+            padding: 3px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .ad-title {
+            font-size: 5px;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 3px;
+        }
+
+        .qr-code-small {
+            width: 28px;
+            height: 28px;
+            background:
+                linear-gradient(90deg, #000 25%, transparent 25%, transparent 75%, #000 75%),
+                linear-gradient(#000 25%, transparent 25%, transparent 75%, #000 75%);
+            background-size: 7px 7px;
+            border: 2px solid #000;
+            border-radius: 2px;
+        }
+
+        /* Step 2: Phone with QR Scanner */
+        .phone {
+            width: 80px;
+            height: 140px;
+            background: #1a1a1a;
+            border-radius: 16px;
+            padding: 6px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: #2a2a2a;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .phone-camera-ui {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, #333 0%, #222 100%);
+        }
+
+        .viewfinder {
+            width: 48px;
+            height: 48px;
+            border: 2px solid var(--color-accent);
+            border-radius: 6px;
+            position: relative;
+        }
+
+        .viewfinder::before,
+        .viewfinder::after {
+            content: '';
+            position: absolute;
+            background: var(--color-accent);
+        }
+
+        .viewfinder::before {
+            width: 10px;
+            height: 2px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .viewfinder::after {
+            width: 2px;
+            height: 10px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .qr-in-viewfinder {
+            width: 32px;
+            height: 32px;
+            background:
+                linear-gradient(90deg, #666 25%, transparent 25%, transparent 75%, #666 75%),
+                linear-gradient(#666 25%, transparent 25%, transparent 75%, #666 75%);
+            background-size: 8px 8px;
+            border-radius: 3px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.6;
+        }
+
+        .scan-button {
+            background: var(--color-accent);
+            color: var(--color-text-dark);
+            border: none;
+            padding: 8px 0;
+            font-family: var(--font-family);
+            font-weight: 700;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Step 3: Landing Page */
+        .landing-page {
+            width: 120px;
+            height: 135px;
+            background: var(--color-white);
+            border: 2px solid var(--color-border);
+            border-radius: 6px;
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+        }
+
+        .landing-header {
+            background: var(--color-primary);
+            padding: 6px;
+            text-align: center;
+        }
+
+        .landing-logo {
+            font-size: 7px;
+            color: var(--color-white);
+            font-weight: 700;
+        }
+
+        .landing-content {
+            padding: 12px 10px;
+            text-align: center;
+        }
+
+        .landing-question {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--color-text-dark);
+            margin-bottom: 3px;
+            line-height: 1.2;
+        }
+
+        .landing-subtext {
+            font-size: 7px;
+            color: var(--color-text-light);
+        }
+
+        .destination-preview {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-top: 8px;
+        }
+
+        .dest-option {
+            background: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: 3px;
+            padding: 4px;
+            font-size: 6px;
+            color: var(--color-text-medium);
+        }
+
+        /* Step 4: Destination Options */
+        .destinations {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            max-width: 140px;
+        }
+
+        .destination-box {
+            background: var(--color-white);
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            padding: 10px 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dest-icon {
+            width: 28px;
+            height: 28px;
+            background: var(--color-primary);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .dest-icon svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--color-white);
+        }
+
+        .dest-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--color-text-dark);
+        }
+
+        /* ===== CTA Section ===== */
+        .cta-section {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 32px 16px;
+            text-align: center;
+        }
+
+        .cta-section h3 {
+            font-size: 1.35rem;
+            margin-bottom: 12px;
+        }
+
+        .cta-section p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            line-height: 1.45;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--color-accent);
+            color: var(--color-text-dark);
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            box-shadow: var(--shadow-sm);
+            /* Better touch target */
+            min-height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cta-button:active {
+            background: var(--color-accent-dark);
+            transform: scale(0.98);
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            background: var(--color-white);
+            padding: 20px 16px calc(20px + var(--safe-bottom));
+            text-align: center;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .footer p {
+            color: var(--color-text-light);
+            font-size: 0.8rem;
+        }
+
+        /* ===== Tablet Breakpoint ===== */
+        @media (min-width: 600px) {
+            .header {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .hero {
+                padding: 32px 20px 24px;
+            }
+
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+
+            .steps-container {
+                padding: 24px 20px 48px;
+                max-width: 700px;
+                margin: 0 auto;
+            }
+
+            .steps-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 28px;
+            }
+
+            .step-box {
+                padding: 28px 20px 24px;
+            }
+
+            .step-illustration {
+                height: 160px;
+            }
+
+            .cta-section {
+                padding: 40px 24px;
+            }
+        }
+
+        /* ===== Desktop Breakpoint ===== */
+        @media (min-width: 1024px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .header-tagline {
+                font-size: 1.25rem;
+            }
+
+            .hero {
+                padding: 48px 20px 32px;
+                max-width: 800px;
+                margin: 0 auto;
+            }
+
+            .hero h2 {
+                font-size: 1.75rem;
+            }
+
+            .hero p {
+                font-size: 1.125rem;
+            }
+
+            .steps-container {
+                --container-width: min(1000px, 100vw - 40px);
+                max-width: 1000px;
+                padding: 32px 20px 64px;
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 24px;
+                position: relative;
+            }
+
+            .step-box {
+                padding: 32px 24px;
+            }
+
+            .step-box:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            }
+
+            .step-number {
+                width: 40px;
+                height: 40px;
+                top: -16px;
+                font-size: 1.125rem;
+            }
+
+            .step-illustration {
+                height: calc(0.7 * 0.25 * var(--container-width, 1000px));
+            }
+
+            .step-title {
+                font-size: 1.125rem;
+            }
+
+            .step-description {
+                font-size: 0.95rem;
+            }
+
+            /* Desktop arrow connectors */
+            .arrow-connector {
+                display: block;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 40px;
+                height: 40px;
+                color: var(--color-primary);
+                opacity: 0.4;
+            }
+
+            .arrow-1 { left: calc(25% - 20px); }
+            .arrow-2 { left: calc(50% - 20px); }
+            .arrow-3 { left: calc(75% - 20px); }
+
+            .cta-section {
+                padding: 48px 20px;
+            }
+
+            .cta-section h3 {
+                font-size: 1.75rem;
+            }
+
+            .cta-section p {
+                font-size: 1.1rem;
+            }
+
+            .cta-button:hover {
+                background: var(--color-accent-dark);
+                transform: translateY(-2px);
+                box-shadow: var(--shadow-md);
+            }
+        }
+
+        /* ===== Reduced Motion ===== */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body class="theme-cool-forest">
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">Mountain Monthly</div>
+        <h1>Direct Connect</h1>
+        <p class="header-tagline">Print to Digital in a Snap</p>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>Connect Your Print Ad to Customers Online</h2>
+        <p>Direct Connect bridges your newspaper advertisement to your digital presence. Readers scan, you choose where they go.</p>
+        <span class="snap-badge">It's a Snap!</span>
+    </section>
+
+    <!-- Steps Section -->
+    <section class="steps-container">
+        <div class="steps-grid">
+            <!-- Arrow Connectors (visible on desktop only) -->
+            <svg class="arrow-connector arrow-1" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 20H32M32 20L24 12M32 20L24 28" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <svg class="arrow-connector arrow-2" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 20H32M32 20L24 12M32 20L24 28" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <svg class="arrow-connector arrow-3" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 20H32M32 20L24 12M32 20L24 28" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+
+            <!-- Step 1: Print Ad with QR -->
+            <div class="step-box">
+                <div class="step-number">1</div>
+                <div class="step-illustration">
+                    <div class="newspaper">
+                        <div class="newspaper-header">MOUNTAIN MONTHLY</div>
+                        <div class="newspaper-content">
+                            <div class="newspaper-text">
+                                <div class="text-line"></div>
+                                <div class="text-line"></div>
+                                <div class="text-line"></div>
+                                <div class="text-line"></div>
+                                <div class="text-line"></div>
+                                <div class="text-line"></div>
+                                <div class="text-line"></div>
+                                <div class="text-line"></div>
+                            </div>
+                            <div class="newspaper-ad">
+                                <div class="ad-title">YOUR AD</div>
+                                <div class="qr-code-small"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="step-title">Your Print Ad</h3>
+                <p class="step-description">Your ad appears in Mountain Monthly with a unique QR code that links to your digital presence.</p>
+            </div>
+
+            <!-- Step 2: Phone Scanning QR -->
+            <div class="step-box">
+                <div class="step-number">2</div>
+                <div class="step-illustration">
+                    <div class="phone">
+                        <div class="phone-screen">
+                            <div class="phone-camera-ui">
+                                <div class="viewfinder">
+                                    <div class="qr-in-viewfinder"></div>
+                                </div>
+                            </div>
+                            <button class="scan-button" type="button">Scan</button>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="step-title">Customer Scans</h3>
+                <p class="step-description">Readers point their smartphone camera at the QR code and tap to connect instantly.</p>
+            </div>
+
+            <!-- Step 3: Landing Page -->
+            <div class="step-box">
+                <div class="step-number">3</div>
+                <div class="step-illustration">
+                    <div class="landing-page">
+                        <div class="landing-header">
+                            <div class="landing-logo">DIRECT CONNECT</div>
+                        </div>
+                        <div class="landing-content">
+                            <p class="landing-question">Where do you want to send them?</p>
+                            <p class="landing-subtext">Choose your destination</p>
+                            <div class="destination-preview">
+                                <div class="dest-option">Website</div>
+                                <div class="dest-option">Social</div>
+                                <div class="dest-option">Email</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="step-title">You Choose</h3>
+                <p class="step-description">Direct Connect asks: "Where do you want to send them?" You control the destination.</p>
+            </div>
+
+            <!-- Step 4: Destinations -->
+            <div class="step-box">
+                <div class="step-number">4</div>
+                <div class="step-illustration">
+                    <div class="destinations">
+                        <div class="destination-box">
+                            <div class="dest-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                            </div>
+                            <span class="dest-label">Website</span>
+                        </div>
+                        <div class="destination-box">
+                            <div class="dest-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+                            </div>
+                            <span class="dest-label">Social Media</span>
+                        </div>
+                        <div class="destination-box">
+                            <div class="dest-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            </div>
+                            <span class="dest-label">Email Signup</span>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="step-title">They Connect</h3>
+                <p class="step-description">Customers land exactly where you want them: your website, social media, or email list.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h3>Ready to Connect?</h3>
+        <p>Add Direct Connect to your next Mountain Monthly advertisement and turn print readers into online customers.</p>
+        <a href="mailto:hello@mountainmonthly.com" class="cta-button">Get Started Today</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Contact us: <a href="mailto:hello@mountainmonthly.com" style="color: var(--color-primary); text-decoration: none;">hello@mountainmonthly.com</a></p>
+        <p>&copy; 2025 Mountain Monthly LLC. All rights reserved.</p>
+    </footer>
+</body>
+</html>
