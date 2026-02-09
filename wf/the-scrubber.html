@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Scrubber - Fast Editorial Analysis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=IBM+Plex+Serif:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 13px;
+            line-height: 1.5;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: steelblue;
+        }
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 30px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            margin: 0 0 5px 0;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        .header p {
+            margin: 0;
+            opacity: 0.9;
+            font-size: 14px;
+        }
+        
+        /* Quick Reference Card */
+        .quick-ref {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+        .quick-ref h2 {
+            margin: 0 0 15px 0;
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .quick-ref ul {
+            margin: 0;
+            padding-left: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .quick-ref li {
+            margin: 8px 0;
+        }
+        
+        /* Main sections */
+        .section {
+            background-color: white;
+            padding: 20px 25px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .section h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+            margin: 0 0 15px 0;
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .section h3 {
+            color: #34495e;
+            margin: 15px 0 10px 0;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        
+        /* Lists */
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 25px;
+        }
+        li {
+            margin: 6px 0;
+        }
+        
+        /* Alert boxes */
+        .stop {
+            background-color: #ffe6e6;
+            border-left: 4px solid #e74c3c;
+            padding: 12px 15px;
+            margin: 12px 0;
+        }
+        .warning {
+            background-color: #fff3cd;
+            border-left: 4px solid #f39c12;
+            padding: 12px 15px;
+            margin: 12px 0;
+        }
+        .check {
+            background-color: #e8f5e9;
+            border-left: 4px solid #27ae60;
+            padding: 12px 15px;
+            margin: 12px 0;
+        }
+        
+        /* Table for AP Style */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 12px;
+        }
+        th {
+            background-color: #34495e;
+            color: white;
+            padding: 10px;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        /* Decision Scale */
+        .decision-scale {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .decision-box {
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 12px;
+        }
+        .decision-box h4 {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        .decision-box p {
+            margin: 0;
+            font-size: 11px;
+        }
+        .level-1 { background-color: #d4edda; border: 2px solid #28a745; }
+        .level-2 { background-color: #fff3cd; border: 2px solid #ffc107; }
+        .level-3 { background-color: #f8d7da; border: 2px solid #dc3545; }
+        .level-4 { background-color: #d6d8d9; border: 2px solid #343a40; }
+        
+        .footer {
+            text-align: center;
+            padding: 15px;
+            color: #e8e8e8;
+            font-style: italic;
+            font-size: 12px;
+        }
+        
+        /* Print optimizations */
+        @media print {
+            body { background-color: white; }
+            .section { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔍 THE SCRUBBER</h1>
+        <p>Fast Editorial Analysis for Cloudcroft Reader</p>
+    </div>
+
+    <div class="quick-ref">
+        <h2>🛑 STOP PUBLISHING IF:</h2>
+        <ul>
+            <li>Factual claims lack specific sources</li>
+            <li>Multiple AI language indicators present</li>
+            <li>Key facts unverified (names, dates, numbers)</li>
+            <li>High libel risk without solid defense</li>
+            <li>Missing critical perspectives or context</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>1. SOURCING & AI CHECK</h2>
+        
+        <div class="stop">
+            <strong>🛑 CANNOT PUBLISH:</strong>
+            <ul style="margin: 8px 0;">
+                <li>Unsourced factual claims</li>
+                <li>Unnamed or unidentifiable sources</li>
+                <li>Quotes without attribution</li>
+            </ul>
+        </div>
+
+        <h3>AI Language Red Flags</h3>
+        <ul>
+            <li>Generic hype: "miraculous," "game-changer," "cutting-edge," "tremendous success"</li>
+            <li>Smooth assertions without sources</li>
+            <li>Formulaic endings: "legacy persists," "testament to," "continues to this day"</li>
+            <li>Perfect narrative with no complications or contradictions</li>
+            <li>Paraphrasing instead of real quotes</li>
+            <li>Marketing/Wikipedia tone vs. journalistic voice</li>
+        </ul>
+        
+        <div class="warning">
+            <strong>⚠️ If 3+ indicators present:</strong> Verify with original reporting or label as unverified/historical.
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>2. FACT-CHECK</h2>
+        
+        <div class="check">
+            <strong>✓ VERIFY EVERY:</strong>
+            <ul style="margin: 8px 0;">
+                <li>Name, title, spelling, credential</li>
+                <li>Date, time, age, timeline</li>
+                <li>Number, statistic, financial figure, measurement</li>
+                <li>Location, address, geographic detail</li>
+                <li>Organization name, acronym, description</li>
+                <li>Historical claim, technical detail</li>
+            </ul>
+        </div>
+
+        <h3>Extra Scrutiny Required For:</h3>
+        <ul>
+            <li>Round numbers | Superlatives ("first," "only," "best")</li>
+            <li>Claims that seem too perfect or advance narrative too neatly</li>
+            <li>Information contradicting common knowledge</li>
+            <li>Unverifiable details</li>
+        </ul>
+
+        <h3>Critical Questions</h3>
+        <ul>
+            <li>What's the opposing viewpoint?</li>
+            <li>What complications existed?</li>
+            <li>Who disagrees?</li>
+            <li>What documentation supports this?</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>3. AP STYLE</h2>
+        
+        <table>
+            <tr>
+                <th>Element</th>
+                <th>Rule</th>
+                <th>Example</th>
+            </tr>
+            <tr>
+                <td><strong>Dates</strong></td>
+                <td>Month day, year (spell out months)</td>
+                <td>Jan. 15, 2024</td>
+            </tr>
+            <tr>
+                <td><strong>Times</strong></td>
+                <td>Figures except noon/midnight</td>
+                <td>3 p.m., 10:30 a.m.</td>
+            </tr>
+            <tr>
+                <td><strong>Numbers</strong></td>
+                <td>Spell one-nine, figures 10+</td>
+                <td>five, 15, 100</td>
+            </tr>
+            <tr>
+                <td><strong>Ages</strong></td>
+                <td>Always figures</td>
+                <td>5-year-old, 55 years old</td>
+            </tr>
+            <tr>
+                <td><strong>Money</strong></td>
+                <td>Figures with $ sign</td>
+                <td>$5, $1 million</td>
+            </tr>
+            <tr>
+                <td><strong>Percent</strong></td>
+                <td>Figures, spell out "percent"</td>
+                <td>15 percent</td>
+            </tr>
+            <tr>
+                <td><strong>Titles</strong></td>
+                <td>Cap before name, lowercase after</td>
+                <td>Mayor Jane Smith / Jane Smith, mayor</td>
+            </tr>
+            <tr>
+                <td><strong>Addresses</strong></td>
+                <td>Abbreviate Ave., Blvd., St. with number</td>
+                <td>123 Main St.</td>
+            </tr>
+        </table>
+
+        <h3>Local Style</h3>
+        <ul>
+            <li>Cloudcroft Village Council (not Town/City Council)</li>
+            <li>Highway 82, U.S. 70 (not Hwy or Route)</li>
+            <li>Otero County</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>4. LIBEL RISK</h2>
+        
+        <div class="stop">
+            <strong>🛑 HIGH RISK - Legal review required:</strong>
+            <ul style="margin: 8px 0;">
+                <li>Accusations of criminal activity</li>
+                <li>Claims of unethical professional conduct</li>
+                <li>Fraud, corruption, or dishonesty allegations</li>
+                <li>Statements damaging reputation or livelihood</li>
+            </ul>
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ MEDIUM RISK - Extra sourcing needed:</strong>
+            <ul style="margin: 8px 0;">
+                <li>Criticism of public officials</li>
+                <li>Investigation/complaint reports</li>
+                <li>Business financial difficulties</li>
+            </ul>
+        </div>
+
+        <h3>Defense Requirements</h3>
+        <ul>
+            <li>Multiple independent sources</li>
+            <li>On-the-record statements</li>
+            <li>Documentary evidence where possible</li>
+            <li>Right of reply given to subjects</li>
+            <li>Truth provable in court</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>5. EDITORIAL STANDARDS</h2>
+        
+        <div class="check">
+            <strong>✓ MUST INCLUDE:</strong>
+            <ul style="margin: 8px 0;">
+                <li>News hook (why now?)</li>
+                <li>Original reporting (what's new?)</li>
+                <li>Multiple perspectives</li>
+                <li>Critical analysis</li>
+                <li>Complete story (who, what, when, where, why, how)</li>
+                <li>Sufficient context</li>
+            </ul>
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ RED FLAGS:</strong>
+            <ul style="margin: 8px 0;">
+                <li>No local angle | No real quotes</li>
+                <li>One-sided | Missing follow-ups</li>
+                <li>Unclear timeline | Passive voice heavy</li>
+                <li>Clichés | Information dumps</li>
+            </ul>
+        </div>
+
+        <h3>Headline Check</h3>
+        <ul>
+            <li>Accurate to story content?</li>
+            <li>Active voice, present tense?</li>
+            <li>Specific, not vague?</li>
+            <li>Avoids sensationalism?</li>
+            <li>No editorializing in news heads?</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>6. FINAL DECISION</h2>
+        
+        <div class="decision-scale">
+            <div class="decision-box level-1">
+                <h4>1. PUBLISH</h4>
+                <p>All checks passed</p>
+            </div>
+            <div class="decision-box level-2">
+                <h4>2. MINOR FIXES</h4>
+                <p>AP style or small fact-checks only</p>
+            </div>
+            <div class="decision-box level-3">
+                <h4>3. MAJOR REVISION</h4>
+                <p>Sourcing, AI, facts, libel, or editorial issues</p>
+            </div>
+            <div class="decision-box level-4">
+                <h4>4. KILL</h4>
+                <p>Unverifiable, unreliable sources, or ethical violations</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>The Scrubber - Cloudcroft Reader © 2024</p>
+    </div>
+</body>
+</html>

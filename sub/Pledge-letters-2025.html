@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Links</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            padding: 8px;
+            background-color: #f5f5f5;
+            max-width: 400px;
+        }
+        
+        h1 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #333;
+            border-bottom: 2px solid #0066cc;
+            padding-bottom: 4px;
+        }
+        
+        h2 {
+            font-size: 13px;
+            margin-top: 12px;
+            margin-bottom: 6px;
+            color: #555;
+        }
+        
+        ul {
+            list-style: none;
+            margin-bottom: 8px;
+        }
+        
+        li {
+            margin-bottom: 3px;
+        }
+        
+        a {
+            color: #0066cc;
+            text-decoration: none;
+            display: block;
+            padding: 2px 4px;
+        }
+        
+        a:hover {
+            background-color: #e6f2ff;
+            text-decoration: underline;
+        }
+        
+        span.clickable {
+            cursor: pointer;
+            color: #0066cc;
+            display: block;
+            padding: 2px 4px;
+        }
+        
+        span.clickable:hover {
+            background-color: #e6f2ff;
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        function toggleSubQuery() {
+            var element = document.getElementById('subQueryText');
+            if (element.style.display === 'none') {
+                element.style.display = 'block';
+            } else {
+                element.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Quick Links</h1>
+    
+    <h2>Local Government</h2>
+    <ul>
+        <li><a href="https://www.cloudcroft.net" target="_blank">Village of Cloudcroft</a></li>
+        <li><a href="https://www.oteroco.org" target="_blank">Otero County</a></li>
+        <li><a href="https://www.nmlegis.gov" target="_blank">NM Legislature</a></li>
+        <li><a href="https://www.governor.state.nm.us" target="_blank">NM Governor's Office</a></li>
+    </ul>
+    
+    <h2>News & Journalism</h2>
+    <ul>
+        <li><a href="https://www.apstylebook.com" target="_blank">AP Stylebook</a></li>
+        <li><a href="https://www.nytimes.com" target="_blank">New York Times</a></li>
+        <li><a href="https://www.newyorker.com" target="_blank">New Yorker</a></li>
+        <li><a href="https://www.alamogordonews.com" target="_blank">Alamogordo Daily News</a></li>
+    </ul>
+    
+    <h2>Publications</h2>
+    <ul>
+        <li><a href="https://cloudcroftreader.com" target="_blank">Cloudcroft Reader</a></li>
+    </ul>
+    
+    <h2>Mountain Monthly</h2>
+    <ul>
+        <li><a href="https://www.mountainmonthly.com" target="_blank">MM Home</a></li>
+        <li><a href="https://www.mountainmonthly.com/sub/sub-pay.html" target="_blank">Subscription Payment</a></li>
+        <li><a href="https://www.mountainmonthly.com/p/MM-JAN-2026-Alfa.pdf" target="_blank">January 2026 Issue</a></li>
+        <li><a href="https://www.mountainmonthly.com/p/Mountain-Monthly-December-2025.pdf" target="_blank">December 2025 Issue</a></li>
+        <li><a href="https://www.mountainmonthly.com/p/MM-Nov-2025.pdf" target="_blank">November 2025 Issue</a></li>
+        <li><span class="clickable" onclick="toggleSubQuery()">Sub Query text</span></li>
+    </ul>
+    <div id="subQueryText" style="display: none; background-color: #fff; padding: 10px; margin: 10px 0; border: 1px solid #ccc; font-size: 11px; line-height: 1.4;">
+        <p>Hi, {NAME},</p>
+        <p>I am sorry you have not received your subscription recently. When the newspaper was sold in October, we realized subscriptions were costing us money at current rates, so we had to make a change.</p>
+        <p>We now offer a digital PDF email subscription for $18 annually. For a first-class mail out of the paper, it's $72 a year. Does either option interest you? We are happy to reimburse you for the remaining balance on your subscription if neither works for you. I'll attach links to the November and December issues below.</p>
+        <p><a href="https://mountainmonthly.com/p/Mountain-Monthly-December-2025.pdf" target="_blank">https://mountainmonthly.com/p/Mountain-Monthly-December-2025.pdf</a></p>
+        <p>Please let me know if you have any questions.</p>
+        <p>Sincerely,</p>
+    </div>
+    
+    <h2>Tourism & Business</h2>
+    <ul>
+        <li><a href="https://www.newmexico.org" target="_blank">NM Tourism</a></li>
+        <li><a href="https://www.edd.newmexico.gov" target="_blank">NM Economic Development</a></li>
+    </ul>
+    
+    <h2>Tools</h2>
+    <ul>
+        <li><a href="https://claude.ai" target="_blank">Claude AI</a></li>
+        <li><a href="https://www.grammarly.com" target="_blank">Grammarly</a></li>
+        <li><a href="https://docs.google.com" target="_blank">Google Docs</a></li>
+        <li><a href="https://wordpress.com" target="_blank">WordPress</a></li>
+    </ul>
+    
+    <h2>Social Media</h2>
+    <ul>
+        <li><a href="https://www.facebook.com" target="_blank">Facebook</a></li>
+        <li><a href="https://twitter.com" target="_blank">Twitter/X</a></li>
+    </ul>
+</body>
+</html>

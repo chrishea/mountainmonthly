@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Choose Your Cabin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            margin: 0;
+            background: #fff;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .wrap {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        a {
+            display: block;
+            text-decoration: none;
+            cursor: pointer;
+            position: relative;
+        }
+
+        a::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0);
+            transition: background 0.3s ease;
+        }
+
+        a:hover::after {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a + a {
+            margin-top: 14px; /* light visual separation */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <a href="https://www.airbnb.com/rooms/47034276?guests=1&adults=1&s=67&unique_share_id=809dee19-8baa-45a5-ab9d-400222a16053&source_impression_id=p3_1766584018_P3LfvrfOONOQCa9C" target="_blank" rel="noopener">
+            <img src="cabin-relax.jpg" alt="Simply Relax in the Mountains – no stairs">
+        </a>
+<hr style="margin:64px auto!important;" />
+        <a href="https://www.airbnb.com/rooms/44135004?guests=1&adults=1&s=67&unique_share_id=47bb420f-1687-4445-9537-eb02eb5bbb6d&source_impression_id=p3_1766584014_P3Z9DBvPTP0BMhU3" target="_blank" rel="noopener">
+            <img src="Cabin-entire.jpg" alt="Simply Enjoy the Mountains – entire cabin">
+        </a>
+    </div>
+</body>
+</html>

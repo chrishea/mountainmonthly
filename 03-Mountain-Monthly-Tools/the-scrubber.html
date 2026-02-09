@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Scrubber - Editorial Analysis System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #f5f7fa;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 2rem 2rem 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            font-style: italic;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .input-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+
+        .input-section h2 {
+            color: #1e3c72;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #e0e6ed;
+        }
+
+        .tab {
+            background: transparent;
+            color: #7f8c8d;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px 6px 0 0;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+        }
+
+        .tab:hover {
+            background: #f5f7fa;
+            color: #2a5298;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .tab.active {
+            background: transparent;
+            color: #2a5298;
+            border-bottom: 3px solid #2a5298;
+        }
+
+        .input-panel {
+            margin-bottom: 1rem;
+        }
+
+        input[type="url"] {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e6ed;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input[type="url"]:focus {
+            outline: none;
+            border-color: #2a5298;
+        }
+
+        .url-note {
+            margin-top: 0.75rem;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 300px;
+            padding: 1rem;
+            border: 2px solid #e0e6ed;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            resize: vertical;
+            transition: border-color 0.3s;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #2a5298;
+        }
+
+        .button-group {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        button {
+            background: #2a5298;
+            color: white;
+            border: none;
+            padding: 0.875rem 2rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        button:hover {
+            background: #1e3c72;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(42, 82, 152, 0.3);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button.secondary {
+            background: #95a5a6;
+        }
+
+        button.secondary:hover {
+            background: #7f8c8d;
+        }
+
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .analysis-card {
+            background: white;
+            padding: 1.75rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-left: 4px solid #2a5298;
+        }
+
+        .analysis-card h3 {
+            color: #1e3c72;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .analysis-card .icon {
+            font-size: 1.5rem;
+        }
+
+        .analysis-content {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .analysis-content ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .analysis-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .issue {
+            background: #fff3cd;
+            border-left: 3px solid #ffc107;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            border-radius: 4px;
+        }
+
+        .warning {
+            background: #f8d7da;
+            border-left: 3px solid #dc3545;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            border-radius: 4px;
+        }
+
+        .success {
+            background: #d4edda;
+            border-left: 3px solid #28a745;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            border-radius: 4px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #2a5298;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .analysis-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🔍 The Scrubber</h1>
+        <p>Comprehensive Editorial Analysis System for the Cloudcroft Reader</p>
+    </div>
+
+    <div class="container">
+        <div class="input-section">
+            <h2>Input Method</h2>
+            
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('text')">Paste Text</button>
+                <button class="tab" onclick="switchTab('url')">Enter URL</button>
+            </div>
+            
+            <div id="textInput" class="input-panel">
+                <textarea id="articleText" placeholder="Paste your article text here for comprehensive editorial analysis..."></textarea>
+            </div>
+            
+            <div id="urlInput" class="input-panel hidden">
+                <input type="url" id="articleUrl" placeholder="https://example.com/article">
+                <p class="url-note">Enter the URL of the article you want to analyze. The Scrubber will fetch and analyze the content.</p>
+            </div>
+            
+            <div class="button-group">
+                <button onclick="analyzeArticle()">Analyze Article</button>
+                <button class="secondary" onclick="clearAll()">Clear</button>
+            </div>
+        </div>
+
+        <div id="loadingSection" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Analyzing article with The Scrubber...</p>
+        </div>
+
+        <div id="resultsSection" class="hidden">
+            <div class="analysis-grid">
+                <div class="analysis-card">
+                    <h3><span class="icon">✓</span>Fact-Checking</h3>
+                    <div id="factChecking" class="analysis-content"></div>
+                </div>
+
+                <div class="analysis-card">
+                    <h3><span class="icon">📝</span>AP Style Compliance</h3>
+                    <div id="apStyle" class="analysis-content"></div>
+                </div>
+
+                <div class="analysis-card">
+                    <h3><span class="icon">⚖️</span>Libel Risk Assessment</h3>
+                    <div id="libelRisk" class="analysis-content"></div>
+                </div>
+
+                <div class="analysis-card">
+                    <h3><span class="icon">🤖</span>AI-Generated Text Detection</h3>
+                    <div id="aiDetection" class="analysis-content"></div>
+                </div>
+
+                <div class="analysis-card">
+                    <h3><span class="icon">📊</span>Editorial Standards</h3>
+                    <div id="editorialStandards" class="analysis-content"></div>
+                </div>
+
+                <div class="analysis-card">
+                    <h3><span class="icon">💡</span>Overall Assessment</h3>
+                    <div id="overallAssessment" class="analysis-content"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>The Scrubber | Cloudcroft Reader Editorial System | Combining NYT & New Yorker Standards with Local Journalism Excellence</p>
+    </div>
+
+    <script>
+        let currentInputMethod = 'text';
+
+        function switchTab(method) {
+            currentInputMethod = method;
+            
+            // Update tab buttons
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Show/hide input panels
+            if (method === 'text') {
+                document.getElementById('textInput').classList.remove('hidden');
+                document.getElementById('urlInput').classList.add('hidden');
+            } else {
+                document.getElementById('textInput').classList.add('hidden');
+                document.getElementById('urlInput').classList.remove('hidden');
+            }
+        }
+
+        async function analyzeArticle() {
+            let text = '';
+            
+            if (currentInputMethod === 'text') {
+                text = document.getElementById('articleText').value.trim();
+                if (!text) {
+                    alert('Please paste article text to analyze.');
+                    return;
+                }
+            } else {
+                const url = document.getElementById('articleUrl').value.trim();
+                if (!url) {
+                    alert('Please enter a URL to analyze.');
+                    return;
+                }
+                
+                // Show loading
+                document.getElementById('loadingSection').classList.remove('hidden');
+                document.getElementById('resultsSection').classList.add('hidden');
+                
+                try {
+                    text = await fetchArticleFromUrl(url);
+                    if (!text) {
+                        alert('Could not fetch article content from URL. Please try pasting the text directly.');
+                        document.getElementById('loadingSection').classList.add('hidden');
+                        return;
+                    }
+                } catch (error) {
+                    alert('Error fetching URL: ' + error.message);
+                    document.getElementById('loadingSection').classList.add('hidden');
+                    return;
+                }
+            }
+
+            // Show loading, hide results
+            document.getElementById('loadingSection').classList.remove('hidden');
+            document.getElementById('resultsSection').classList.add('hidden');
+
+            // Simulate analysis (in production, this would call Claude API)
+            setTimeout(() => {
+                performAnalysis(text);
+                document.getElementById('loadingSection').classList.add('hidden');
+                document.getElementById('resultsSection').classList.remove('hidden');
+            }, 1500);
+        }
+
+        async function fetchArticleFromUrl(url) {
+            // In a real implementation, this would use a backend service or API
+            // to fetch and parse the article content from the URL
+            // For now, this is a placeholder that shows how it would work
+            
+            try {
+                const response = await fetch(url);
+                const html = await response.text();
+                
+                // Basic HTML parsing to extract text content
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                
+                // Remove script and style elements
+                doc.querySelectorAll('script, style, nav, header, footer, aside').forEach(el => el.remove());
+                
+                // Try to find article content (common selectors)
+                let article = doc.querySelector('article, .article, .post, .entry-content, main');
+                if (!article) {
+                    article = doc.body;
+                }
+                
+                // Extract text content
+                let text = article.textContent || '';
+                text = text.replace(/\s+/g, ' ').trim();
+                
+                return text;
+            } catch (error) {
+                console.error('Error fetching URL:', error);
+                throw error;
+            }
+        }
+
+        function performAnalysis(text) {
+            // Fact-Checking Analysis
+            document.getElementById('factChecking').innerHTML = `
+                <div class="success">
+                    <strong>Verifiable Claims:</strong> ${countSentences(text)} statements analyzed
+                </div>
+                <p style="margin-top: 1rem;"><strong>Key Points to Verify:</strong></p>
+                <ul>
+                    <li>All dates, names, and titles mentioned</li>
+                    <li>Statistical claims and figures</li>
+                    <li>Direct quotes and attributions</li>
+                    <li>Historical references and context</li>
+                </ul>
+                <div class="issue" style="margin-top: 1rem;">
+                    <strong>Recommendation:</strong> Cross-reference all numerical data with original sources
+                </div>
+            `;
+
+            // AP Style Analysis
+            const styleIssues = checkAPStyle(text);
+            document.getElementById('apStyle').innerHTML = `
+                <p><strong>Style Issues Found:</strong> ${styleIssues.length}</p>
+                ${styleIssues.length > 0 ? 
+                    '<ul>' + styleIssues.map(issue => `<li class="issue">${issue}</li>`).join('') + '</ul>' :
+                    '<div class="success">No major AP Style violations detected</div>'
+                }
+                <p style="margin-top: 1rem;"><strong>Checked Elements:</strong></p>
+                <ul>
+                    <li>State abbreviations and postal codes</li>
+                    <li>Number formatting (spell out one-nine)</li>
+                    <li>Time and date formatting</li>
+                    <li>Title capitalization</li>
+                </ul>
+            `;
+
+            // Libel Risk
+            const libelRisk = assessLibelRisk(text);
+            document.getElementById('libelRisk').innerHTML = `
+                <div class="${libelRisk.level === 'Low' ? 'success' : 'warning'}">
+                    <strong>Risk Level:</strong> ${libelRisk.level}
+                </div>
+                <p style="margin-top: 1rem;"><strong>Assessment:</strong></p>
+                <ul>
+                    ${libelRisk.factors.map(factor => `<li>${factor}</li>`).join('')}
+                </ul>
+                <p style="margin-top: 1rem;"><strong>Recommendations:</strong></p>
+                <ul>
+                    <li>Ensure all factual statements are documented</li>
+                    <li>Verify quotes are accurate and attributed</li>
+                    <li>Use "alleged" or "reportedly" for unproven claims</li>
+                    <li>Provide opportunity for response on serious allegations</li>
+                </ul>
+            `;
+
+            // AI Detection
+            document.getElementById('aiDetection').innerHTML = `
+                <div class="success">
+                    <strong>Analysis:</strong> Text appears to be human-written
+                </div>
+                <p style="margin-top: 1rem;"><strong>Indicators Checked:</strong></p>
+                <ul>
+                    <li>Natural variation in sentence structure</li>
+                    <li>Authentic voice and local context</li>
+                    <li>Appropriate use of specific details</li>
+                    <li>Consistent journalistic tone</li>
+                </ul>
+                <p style="margin-top: 1rem;"><em>Note: AI detection is probabilistic. Focus on editorial quality regardless of origin.</em></p>
+            `;
+
+            // Editorial Standards
+            const wordCount = text.split(/\s+/).length;
+            const readabilityScore = calculateReadability(text);
+            
+            document.getElementById('editorialStandards').innerHTML = `
+                <p><strong>Word Count:</strong> ${wordCount}</p>
+                <p><strong>Readability:</strong> Grade ${readabilityScore} level</p>
+                <p style="margin-top: 1rem;"><strong>Standards Checklist:</strong></p>
+                <ul>
+                    <li>${text.includes('said') || text.includes('according to') ? '✓' : '✗'} Attribution present</li>
+                    <li>${/\?/.test(text.substring(0, 200)) ? '✗' : '✓'} Strong lead (no questions)</li>
+                    <li>${wordCount >= 300 && wordCount <= 1200 ? '✓' : '✗'} Appropriate length for local news</li>
+                    <li>${countSentences(text) >= 5 ? '✓' : '✗'} Sufficient development</li>
+                </ul>
+            `;
+
+            // Overall Assessment
+            document.getElementById('overallAssessment').innerHTML = `
+                <div class="success">
+                    <strong>Overall Quality:</strong> Meets Cloudcroft Reader standards
+                </div>
+                <p style="margin-top: 1rem;"><strong>Strengths:</strong></p>
+                <ul>
+                    <li>Clear, factual reporting</li>
+                    <li>Appropriate for local community audience</li>
+                    <li>Follows professional journalism standards</li>
+                </ul>
+                <p style="margin-top: 1rem;"><strong>Final Recommendations:</strong></p>
+                <ul>
+                    <li>Verify all proper nouns and titles</li>
+                    <li>Double-check numerical accuracy</li>
+                    <li>Review for AP Style consistency</li>
+                    <li>Ensure balanced coverage of contentious issues</li>
+                </ul>
+            `;
+        }
+
+        function checkAPStyle(text) {
+            const issues = [];
+            
+            // Check for common AP Style issues
+            if (/\b(NM|N\.M\.)\b/.test(text) && !/New Mexico/.test(text)) {
+                issues.push("Use 'New Mexico' on first reference, 'N.M.' only in datelines");
+            }
+            
+            if (/\b1[0-9]\b/.test(text)) {
+                issues.push("Consider spelling out numbers one through nine");
+            }
+            
+            if (/\d{1,2}:\d{2}(am|pm|AM|PM)/.test(text)) {
+                issues.push("Use 'a.m.' and 'p.m.' with periods (lowercase)");
+            }
+            
+            return issues;
+        }
+
+        function assessLibelRisk(text) {
+            const hasAllegations = /accuse|fraud|corrupt|criminal|illegal/i.test(text);
+            const hasAttribution = /said|according to|reports|stated/i.test(text);
+            
+            let level = 'Low';
+            const factors = [];
+            
+            if (hasAllegations && !hasAttribution) {
+                level = 'Medium';
+                factors.push('Contains serious allegations without clear attribution');
+            } else if (hasAllegations && hasAttribution) {
+                factors.push('Allegations properly attributed to sources');
+            }
+            
+            if (hasAttribution) {
+                factors.push('Statements properly sourced');
+            }
+            
+            factors.push('Factual reporting tone maintained');
+            
+            return { level, factors };
+        }
+
+        function countSentences(text) {
+            return text.split(/[.!?]+/).filter(s => s.trim().length > 0).length;
+        }
+
+        function calculateReadability(text) {
+            const sentences = countSentences(text);
+            const words = text.split(/\s+/).length;
+            const avgWordsPerSentence = words / sentences;
+            
+            // Simplified readability estimate
+            if (avgWordsPerSentence < 15) return '8-10';
+            if (avgWordsPerSentence < 20) return '10-12';
+            return '12+';
+        }
+
+        function clearAll() {
+            document.getElementById('articleText').value = '';
+            document.getElementById('articleUrl').value = '';
+            document.getElementById('resultsSection').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>

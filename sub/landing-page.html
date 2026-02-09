@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mountain Monthly</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-image: url('MM-Landing-Bkgnd.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 0;
+        }
+
+        .container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 480px;
+            width: 100%;
+            padding: 48px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .header-logo {
+            max-width: 200px;
+            width: 100%;
+            height: auto;
+            margin: 0 auto 20px;
+            display: block;
+        }
+
+        .header h1 {
+            color: #1a202c;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .header .tagline {
+            color: #2d5016;
+            font-size: 14px;
+            font-weight: 500;
+            font-style: italic;
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        .header p {
+            color: #718096;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            color: #2d3748;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #2d5016;
+            box-shadow: 0 0 0 3px rgba(45, 80, 22, 0.1);
+        }
+
+        input:invalid:not(:placeholder-shown) {
+            border-color: #f56565;
+        }
+
+        input:valid:not(:placeholder-shown) {
+            border-color: #48bb78;
+        }
+
+        .submit-btn {
+            width: 70%;
+            padding: 19px 16px;
+            background: linear-gradient(135deg, #2d5016 0%, #1a4d2e 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin-top: 8px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(45, 80, 22, 0.5);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .success-message {
+            display: none;
+            background: #c6f6d5;
+            color: #22543d;
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        .preview-image {
+            max-width: 160px;
+            width: 100%;
+            height: auto;
+            margin: 24px auto;
+            display: block;
+            transform: rotate(-4deg);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-radius: 4px;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: slideIn 0.4s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .privacy-note {
+            text-align: center;
+            color: #a0aec0;
+            font-size: 13px;
+            margin-top: 24px;
+            line-height: 1.5;
+        }
+
+        .copyright {
+            text-align: center;
+            color: #a0aec0;
+            font-size: 12px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .faq-section {
+            margin-top: 0;
+            margin-bottom: 48px;
+            padding-top: 0;
+            padding-bottom: 32px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .faq-title {
+            text-align: center;
+            color: #1a202c;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .faq-item {
+            margin-bottom: 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: #2d5016;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 16px 20px;
+            background: #f7fafc;
+            border: none;
+            text-align: left;
+            font-size: 16px;
+            font-weight: 600;
+            color: #2d3748;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #edf2f7;
+        }
+
+        .faq-question.active {
+            background: #2d5016;
+            color: white;
+        }
+
+        .faq-icon {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background: white;
+        }
+
+        .faq-answer.show {
+            max-height: 300px;
+            padding: 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .faq-answer p {
+            color: #4a5568;
+            line-height: 1.6;
+            margin: 0;
+            font-size: 12.8px;
+        }
+
+        .faq-answer a {
+            color: #2d5016;
+            text-decoration: underline;
+            transition: color 0.2s ease;
+        }
+
+        .faq-answer a:hover {
+            color: #1a4d2e;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 32px 24px;
+            }
+
+            .header-logo {
+                max-width: 80px;
+                width: 100%;
+                height: auto;
+            }
+
+            .header h1 {
+                font-size: 21px;
+            }
+
+            .faq-title {
+                font-size: 15px;
+            }
+
+            .faq-question {
+                font-size: 15px;
+                padding: 14px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="MM-Nov-2025-Pg-One.png" alt="Mountain Monthly November 2025 Issue" class="header-logo">
+            <h1>Mountain Monthly</h1>
+            <p class="tagline">The Voice of the Mountain</p>
+            <p>Let's get to know each other</p>
+        </div>
+
+        <div class="faq-section">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(0)">
+                    <span>How do I contact you?</span>
+                    <span class="faq-icon">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <p>At the moment, the best way to reach us is at <a href="mailto:hello@mountainmonthly.com">hello@mountainmonthly.com</a></p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(1)">
+                    <span>I have a question about subscriptions.</span>
+                    <span class="faq-icon">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Annual subscriptions are now sent first-class mail for $72 a year. To order your subscription, send an email to <a href="mailto:hello@mountainmonthly.com?subject=About%20a%20Subscription...">hello@mountainmonthly.com</a>.</p>
+                </div>
+
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(2)">
+                    <span>How can I learn more about advertising opportunities?</span>
+                    <span class="faq-icon">▼</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Please contact us at <a href="mailto:hello@mountainmonthly.com">hello@mountainmonthly.com</a></p>
+                </div>
+            </div>
+        </div>
+
+        <script async
+  src="https://js.stripe.com/v3/buy-button.js">
+</script>
+
+<div style="text-align: center;">
+<stripe-buy-button
+  buy-button-id="buy_btn_1SYrEyFm5xBDEnG7OcWOvlSy"
+  publishable-key="pk_test_51SUrmuFm5xBDEnG7PVGrenxLxFKy69140CFo7M4Z5mAs6phwubQHDAWiraObV3l3gUUfKe4dRh2koSvQvVkmDqpy00oMNoOzSd"
+>
+</stripe-buy-button>
+
+</div>
+
+        <form id="customerForm">
+            <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input 
+                    type="text" 
+                    id="name" 
+                    name="name" 
+                    placeholder="John Doe"
+                    required
+                    minlength="2"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    placeholder="john@example.com"
+                    required
+                >
+            </div>
+
+            <button type="submit" class="submit-btn">Get Connected</button>
+        </form>
+
+        <img src="icon-mm-elk-circle.png" alt="Mountain Monthly Logo" class="preview-image">
+
+        <div class="success-message" id="successMessage">
+            ✓ Thank you! Your information has been submitted successfully.
+        </div>
+
+        <p class="privacy-note">
+            We respect your privacy. Your information will never be shared with third parties.
+        </p>
+
+        <p style="text-align:center!important">
+<stripe-buy-button
+  buy-button-id="buy_btn_1Sb3AbFh6IRtrT1YwqTf0YlB"
+  publishable-key="pk_live_51SUrmbFh6IRtrT1YuWnLsmFIa79YlLdE86WbA5mmDUwkF8d6esySQaeaM7uZMC9OyRJc2HHjg3T5pC8tqhxh4acG00uEoi9AwE"
+>
+</stripe-buy-button></p>
+
+        <p class="copyright">
+            © 2025 Mountain Monthly LLC. All rights reserved.
+        </p>
+    </div>
+
+    <script>
+        const form = document.getElementById('customerForm');
+        const successMessage = document.getElementById('successMessage');
+        const submitButton = form.querySelector('.submit-btn');
+
+        // IMPORTANT: Replace this URL with your Google Apps Script web app URL
+        const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Disable button during submission
+            submitButton.disabled = true;
+            submitButton.textContent = 'Submitting...';
+
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                timestamp: new Date().toISOString()
+            };
+
+            try {
+                // Send to Google Sheets
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                // Show success message
+                successMessage.classList.add('show');
+                form.reset();
+
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.classList.remove('show');
+                }, 5000);
+
+            } catch (error) {
+                console.error('Error:', error);
+                alert('There was an error submitting your information. Please try again.');
+            } finally {
+                // Re-enable button
+                submitButton.disabled = false;
+                submitButton.textContent = 'Get Connected';
+            }
+        });
+
+        // FAQ Toggle Function
+        function toggleFAQ(index) {
+            const faqItems = document.querySelectorAll('.faq-item');
+            const clickedItem = faqItems[index];
+            const question = clickedItem.querySelector('.faq-question');
+            const answer = clickedItem.querySelector('.faq-answer');
+            
+            // Toggle the clicked FAQ
+            const isActive = question.classList.contains('active');
+            
+            // Close all FAQs
+            document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('active'));
+            document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('show'));
+            
+            // If it wasn't active, open it
+            if (!isActive) {
+                question.classList.add('active');
+                answer.classList.add('show');
+            }
+        }
+    </script>
+</body>
+</html>

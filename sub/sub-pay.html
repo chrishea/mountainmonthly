@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+
+    <style>
+        :root {
+  --mm-color-primary: #0B1B3C;
+  --mm-color-secondary: #2B567A;
+  --mm-color-accent: #E89E3A;
+  --mm-color-bg: #F6F7FA;
+  --mm-color-card: #FFFFFF;
+  --mm-color-text: #1F1F1F;
+  --mm-color-muted: #9CA3AF;
+}
+        body {
+            margin: 0;
+            padding: 0;
+            background-color:#F6F7FA;
+            font-family: 'ibm plex serif', serif;
+        }
+        
+        .container {
+          width:100vw;
+          height:100vh;
+          margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+           
+        }
+
+        .box {
+        max-width:400px!important;
+        width:100%;
+           background-color: var(--mm-color-bg);
+            margin:2vh auto!important;
+        }
+
+        .card {
+            background-color: var(--mm-color-card);
+            border-radius: 8px;
+       
+            padding: 20px 32px;
+            margin: 20px auto;
+        }
+          html {
+            font-size: 13px;
+            line-height:150%;
+            font-family: 'ibm plex serif', serif;
+        }
+        h3 {padding:10px!important;margin:0 auto;}
+
+        .card-headliner {font-size:2em;
+        font-family: 'ibm plex serif', serif; background-color: var(--mm-color-card);
+            border-radius: 8px;
+       width:80%;
+       max-width:700px;
+            padding: 20px 32px;
+            margin: 20px auto;
+            line-height:125%;
+
+        background-color:transparent;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+            <div class="card-headliner" >
+            Get the Mountain Monthly delivered to you.<br />Stay connected with the Cloudcroft community
+            </div>
+            <div class="box">
+        
+            <div class="card ">
+                    <img src="MM-Nov-2025-Cover.jpg" 
+                    alt="Digital edition cover" 
+                    style="width: 60%">
+             
+             <h3>Digital edition<br />
+                <span style="font-weight:400!important;font-family:'ibm plex sans',sans-serif">$18 year</span></h3>
+             <p style="font-size:1em;font-weight:400">Subscribe to receive a digital PDF version of the <b>Mountain Monthly</b> delivered to your inbox the day the new issue is printed.</p>
+
+       <script async
+  src="https://js.stripe.com/v3/buy-button.js">
+</script>
+ 
+<stripe-buy-button
+  buy-button-id="buy_btn_1Sb3AbFh6IRtrT1YwqTf0YlB"
+  publishable-key="pk_live_51SUrmbFh6IRtrT1YuWnLsmFIa79YlLdE86WbA5mmDUwkF8d6esySQaeaM7uZMC9OyRJc2HHjg3T5pC8tqhxh4acG00uEoi9AwE"
+>
+</stripe-buy-button>
+
+<a href="https://www.mountainmonthly.com/p/MM-JAN-2026-Alfa.pdf"
+   target="_blank"
+   style="display: inline-block; margin-top: 16px; padding: 12px 24px; background-color: var(--mm-color-secondary); color: white; text-decoration: none; border-radius: 6px; font-family: 'ibm plex sans', sans-serif; font-weight: 500; transition: background-color 0.2s ease;"
+   onmouseover="this.style.backgroundColor='var(--mm-color-primary)'"
+   onmouseout="this.style.backgroundColor='var(--mm-color-secondary)'">
+   Sample Issue
+</a>
+            </div>
+    
+<hr style="margin:4vh 0;">
+        <div class="card">
+          
+                <img src="MM-Dec-2025-Cover.jpg" 
+                alt="print edition cover"  
+                 style="width: 60%">
+           <h3>Print issue<br />
+                <span style="font-weight:400!important;font-family:'ibm plex sans',sans-serif">$72 year</span></h3>
+
+<p style="font-size:1em;font-weight:400">Receive a print copy of the <b>Mountain Monthly</b> delivered to you by first-class mail at the beginning of each month for a year</p>
+<script async
+  src="https://js.stripe.com/v3/buy-button.js">
+</script>
+
+<stripe-buy-button
+  buy-button-id="buy_btn_1Sb4eGFh6IRtrT1Yv8ytJXVw"
+  publishable-key="pk_live_51SUrmbFh6IRtrT1YuWnLsmFIa79YlLdE86WbA5mmDUwkF8d6esySQaeaM7uZMC9OyRJc2HHjg3T5pC8tqhxh4acG00uEoi9AwE"
+>
+</stripe-buy-button>
+</div>
+</div>
+    </div>
+</body>
+</html>

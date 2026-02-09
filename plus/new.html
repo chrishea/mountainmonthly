@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Scrubber - Cloudcroft Reader Editorial Analysis System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=IBM+Plex+Serif:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 13px;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #4682B4; /* steelblue */
+            padding-top: 10px;
+        }
+        
+        /* Sticky Header Logic */
+        .sticky-wrapper {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 10px;
+            z-index: 1000;
+            margin-bottom: 20px;
+        }
+
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h1 { margin: 0; font-size: 22px; font-weight: 700; }
+        
+        .score-display {
+            background: #f1c40f;
+            color: #2c3e50;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        #total-score { font-size: 24px; font-weight: 700; display: block; }
+        #action-status { font-size: 11px; font-weight: 700; text-transform: uppercase; }
+
+        .quick-ref {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .quick-ref h2 { margin: 0 0 10px 0; font-size: 14px; text-transform: uppercase; }
+        .quick-ref table { margin: 0; border: none; }
+        .quick-ref td, .quick-ref th { border-bottom: 1px solid rgba(255,255,255,0.2); padding: 5px; color: white; }
+
+        /* Main sections */
+        .section {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .section h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #2c3e50;
+            padding-bottom: 8px;
+            margin: 0 0 20px 0;
+            font-size: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .section h3 { color: #34495e; margin: 20px 0 10px 0; font-size: 16px; font-weight: 600; }
+        
+        /* Interactive Buttons */
+        .flag-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 10px;
+            margin-right: 8px;
+            transition: background 0.2s;
+        }
+        .flag-btn:hover { background: #c0392b; }
+        .reset-btn {
+            background: #95a5a6;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+            margin-top: 5px;
+        }
+
+        /* Lists & Tables */
+        ul { padding-left: 20px; }
+        li { margin: 8px 0; position: relative; list-style-type: none; }
+        li::before { content: "•"; color: #3498db; font-weight: bold; display: inline-block; width: 1em; margin-left: -1em; }
+        
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 12px; }
+        th { background-color: #34495e; color: white; padding: 12px 10px; text-align: left; }
+        td { padding: 12px 10px; border-bottom: 1px solid #ddd; vertical-align: top; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+
+        /* Alert boxes */
+        .stop, .critical { background-color: #ffe6e6; border-left: 5px solid #e74c3c; padding: 15px; margin: 15px 0; }
+        .warning { background-color: #fff3cd; border-left: 5px solid #f39c12; padding: 15px; margin: 15px 0; }
+        .check { background-color: #e8f5e9; border-left: 5px solid #27ae60; padding: 15px; margin: 15px 0; }
+
+        .footer { text-align: center; padding: 30px; color: #e8e8e8; font-style: italic; font-size: 12px; }
+
+        @media print {
+            body { background-color: white; padding: 0; }
+            .sticky-wrapper { position: static; }
+            .flag-btn, .reset-btn { display: none; }
+            .section { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sticky-wrapper">
+        <div class="header">
+            <div>
+                <h1>🔍 THE SCRUBBER</h1>
+                <button class="reset-btn" onclick="resetScore()">Reset Analysis</button>
+            </div>
+            <div class="score-display">
+                <span id="total-score">0</span>
+                <span id="action-status">1. PUBLISH</span>
+            </div>
+        </div>
+
+        <div class="quick-ref">
+            <h2>📉 Penalty Weights</h2>
+            <table>
+                <tr>
+                    <td>🛑 STOP (-10)</td>
+                    <td>⚠️ RED FLAG (-5)</td>
+                    <td>⚙️ STYLE FIX (-1)</td>
+                    <td>✍️ WRITING (-2)</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>1. SOURCING & AI CHECK</h2>
+        <div class="stop">
+            <strong>🛑 CANNOT PUBLISH (Weight: -10)</strong>
+            <ul>
+                <li><button class="flag-btn" onclick="addScore(-10)">FLAG</button>Factual claims lack specific, linkable sources.</li>
+                <li><button class="flag-btn" onclick="addScore(-10)">FLAG</button>Unnamed or unidentifiable sources for core claims.</li>
+                <li><button class="flag-btn" onclick="addScore(-10)">FLAG</button>Anonymous source used without Editor-in-Chief approval.</li>
+            </ul>
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ AI/Language Red Flags (Weight: -5)</strong>
+            <ul>
+                <li><button class="flag-btn" onclick="addScore(-5)">FLAG</button>Generic hype: "miraculous," "game-changer," "cutting-edge."</li>
+                <li><button class="flag-btn" onclick="addScore(-5)">FLAG</button>Formulaic endings: "legacy persists," "testament to."</li>
+                <li><button class="flag-btn" onclick="addScore(-5)">FLAG</button>Marketing/Wikipedia tone vs. journalistic voice.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>2. FACT-CHECK</h2>
+        <div class="check">
+            <strong>✓ VERIFY EVERY (Weight: -5 if unverified)</strong>
+            <ul>
+                <li><button class="flag-btn" onclick="addScore(-5)">FLAG</button><strong>People:</strong> Name, title, spelling, credential.</li>
+                <li><button class="flag-btn" onclick="addScore(-5)">FLAG</button><strong>Data:</strong> Number, statistic, financial figure.</li>
+                <li><button class="flag-btn" onclick="addScore(-5)">FLAG</button><strong>Visuals:</strong> Missing photo credit or caption.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>3. AP STYLE & LOCAL GUIDANCE</h2>
+        <p><em>(Weight: -1 per error)</em></p>
+        <table>
+            <tr>
+                <th>Element</th>
+                <th>Rule</th>
+                <th>Flag</th>
+            </tr>
+            <tr>
+                <td><strong>Dates</strong></td>
+                <td>Jan. 15, 2024 (Abbreviate months with date)</td>
+                <td><button class="flag-btn" onclick="addScore(-1)">FLAG</button></td>
+            </tr>
+            <tr>
+                <td><strong>Percent</strong></td>
+                <td>Figures, use "%" symbol (Modern AP Style)</td>
+                <td><button class="flag-btn" onclick="addScore(-1)">FLAG</button></td>
+            </tr>
+            <tr>
+                <td><strong>Punctuation</strong></td>
+                <td>Periods/Commas go inside quotation marks.</td>
+                <td><button class="flag-btn" onclick="addScore(-1)">FLAG</button></td>
+            </tr>
+        </table>
+
+        <h3>Common Local Traps (Weight: -2)</h3>
+        <div class="warning">
+            <ul>
+                <li><button class="flag-btn" onclick="addScore(-2)">FLAG</button><strong>USFS vs. BLM:</strong> Lincoln National Forest is USFS.</li>
+                <li><button class="flag-btn" onclick="addScore(-2)">FLAG</button><strong>NMED:</strong> Use NMED (not NMENV).</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>5. EDITORIAL & STRUNK/WHITE</h2>
+        <h3>Writing Fundamentals</h3>
+        <table>
+            <tr>
+                <th>Mistake</th>
+                <th>Fix</th>
+                <th>Flag</th>
+            </tr>
+            <tr>
+                <td><strong>Journalese</strong></td>
+                <td>Avoid "shuttered" (closed), "slashed" (reduced), "venerable."</td>
+                <td><button class="flag-btn" onclick="addScore(-2)">FLAG</button></td>
+            </tr>
+            <tr>
+                <td><strong>Passive Voice</strong></td>
+                <td>"The budget was approved" → "The council approved the budget."</td>
+                <td><button class="flag-btn" onclick="addScore(-2)">FLAG</button></td>
+            </tr>
+            <tr>
+                <td><strong>Needless Words</strong></td>
+                <td>"In order to" → "To" | "Due to the fact that" → "Because"</td>
+                <td><button class="flag-btn" onclick="addScore(-2)">FLAG</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="footer">
+        <p>The Scrubber - Cloudcroft Reader © 2025</p>
+        <p>Ensuring journalistic excellence through rigorous analysis.</p>
+    </div>
+
+    <script>
+        let score = 0;
+
+        function addScore(points) {
+            score += points;
+            updateDisplay();
+        }
+
+        function resetScore() {
+            score = 0;
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            const scoreEl = document.getElementById('total-score');
+            const statusEl = document.getElementById('action-status');
+            const displayBox = document.querySelector('.score-display');
+            
+            scoreEl.innerText = score;
+
+            if (score >= 0) {
+                statusEl.innerText = "1. PUBLISH";
+                displayBox.style.background = "#27ae60";
+                displayBox.style.color = "white";
+            } else if (score >= -5) {
+                statusEl.innerText = "2. MINOR FIXES";
+                displayBox.style.background = "#f1c40f";
+                displayBox.style.color = "#2c3e50";
+            } else if (score >= -15) {
+                statusEl.innerText = "3. MAJOR REVISION";
+                displayBox.style.background = "#e67e22";
+                displayBox.style.color = "white";
+            } else {
+                statusEl.innerText = "4. KILL STORY";
+                displayBox.style.background = "#c0392b";
+                displayBox.style.color = "white";
+            }
+        }
+        
+        // Initialize
+        updateDisplay();
+    </script>
+</body>
+</html>

@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>December 2025 Donor Checklist - Cloudcroft Reader</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=IBM+Plex+Serif:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'IBM Plex Serif', serif;
+            font-size: 13px;
+            line-height: 1.6;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: steelblue;
+        }
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-family: 'IBM Plex Sans', sans-serif;
+            margin: 0 0 10px 0;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        .header p {
+            font-family: 'IBM Plex Sans', sans-serif;
+            margin: 5px 0;
+            font-style: italic;
+            opacity: 0.9;
+            font-size: 13px;
+        }
+        .stats {
+            background-color: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            text-align: center;
+            padding: 10px;
+        }
+        .stat-number {
+            font-size: 24px;
+            font-weight: 700;
+            font-family: 'IBM Plex Sans', sans-serif;
+        }
+        .stat-label {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        .section {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .section h2 {
+            font-family: 'IBM Plex Sans', sans-serif;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 0;
+            font-size: 18px;
+            font-weight: 700;
+        }
+        .donor-group {
+            background-color: #f8f9fa;
+            border-left: 5px solid #27ae60;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .donor-group h3 {
+            font-family: 'IBM Plex Sans', sans-serif;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'IBM Plex Serif', serif;
+            font-size: 13px;
+        }
+        th {
+            font-family: 'IBM Plex Sans', sans-serif;
+            background-color: #34495e;
+            color: white;
+            padding: 10px;
+            text-align: left;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        tr {
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        tr:hover {
+            background-color: #e8f5e9;
+        }
+        tr.checked {
+            background-color: #d4edda;
+            opacity: 0.7;
+        }
+        tr.checked td {
+            text-decoration: line-through;
+        }
+        .checkbox-cell {
+            width: 30px;
+            text-align: center;
+            font-size: 18px;
+            color: #3498db;
+        }
+        .checkbox-cell.checked-box {
+            color: #27ae60;
+        }
+        .amount {
+            font-weight: 600;
+            color: #27ae60;
+        }
+        .frequency {
+            font-size: 11px;
+            color: #666;
+            font-style: italic;
+        }
+        .email {
+            font-size: 11px;
+            color: #555;
+        }
+        .monthly-badge {
+            background-color: #3498db;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: 600;
+            margin-left: 5px;
+        }
+        .yearly-badge {
+            background-color: #9b59b6;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: 600;
+            margin-left: 5px;
+        }
+        .controls {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        button.reset {
+            background-color: #e74c3c;
+        }
+        button.reset:hover {
+            background-color: #c0392b;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #e8e8e8;
+            font-style: italic;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 13px;
+        }
+        .search-box {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            font-family: 'IBM Plex Serif', serif;
+            font-size: 14px;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadChecklistState();
+            
+            // Add click event to each donor row
+            const donorRows = document.querySelectorAll('.donor-row');
+            donorRows.forEach(row => {
+                row.addEventListener('click', function(e) {
+                    this.classList.toggle('checked');
+                    const checkbox = this.querySelector('.checkbox-cell');
+                    checkbox.classList.toggle('checked-box');
+                    checkbox.textContent = this.classList.contains('checked') ? '☑' : '☐';
+                    saveChecklistState();
+                    updateStats();
+                });
+            });
+            
+            // Search functionality
+            const searchBox = document.getElementById('searchBox');
+            searchBox.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                donorRows.forEach(row => {
+                    const text = row.textContent.toLowerCase();
+                    row.style.display = text.includes(searchTerm) ? '' : 'none';
+                });
+            });
+            
+            updateStats();
+        });
+        
+        function saveChecklistState() {
+            const checkedItems = [];
+            document.querySelectorAll('.donor-row.checked').forEach(row => {
+                const donorName = row.cells[1].textContent.trim();
+                checkedItems.push(donorName);
+            });
+            localStorage.setItem('donorChecklistDec2025', JSON.stringify(checkedItems));
+        }
+        
+        function loadChecklistState() {
+            const savedState = localStorage.getItem('donorChecklistDec2025');
+            if (savedState) {
+                const checkedItems = JSON.parse(savedState);
+                document.querySelectorAll('.donor-row').forEach(row => {
+                    const donorName = row.cells[1].textContent.trim();
+                    if (checkedItems.includes(donorName)) {
+                        row.classList.add('checked');
+                        const checkbox = row.querySelector('.checkbox-cell');
+                        checkbox.classList.add('checked-box');
+                        checkbox.textContent = '☑';
+                    }
+                });
+            }
+        }
+        
+        function resetChecklist() {
+            if (confirm('Are you sure you want to reset all checkmarks?')) {
+                document.querySelectorAll('.donor-row').forEach(row => {
+                    row.classList.remove('checked');
+                    const checkbox = row.querySelector('.checkbox-cell');
+                    checkbox.classList.remove('checked-box');
+                    checkbox.textContent = '☐';
+                });
+                localStorage.removeItem('donorChecklistDec2025');
+                updateStats();
+            }
+        }
+        
+        function updateStats() {
+            const total = document.querySelectorAll('.donor-row').length;
+            const completed = document.querySelectorAll('.donor-row.checked').length;
+            const remaining = total - completed;
+            
+            document.getElementById('totalDonors').textContent = total;
+            document.getElementById('completedDonors').textContent = completed;
+            document.getElementById('remainingDonors').textContent = remaining;
+        }
+        
+        function showAll() {
+            document.querySelectorAll('.donor-row').forEach(row => {
+                row.style.display = '';
+            });
+            document.getElementById('searchBox').value = '';
+        }
+        
+        function showUnchecked() {
+            document.querySelectorAll('.donor-row').forEach(row => {
+                row.style.display = row.classList.contains('checked') ? 'none' : '';
+            });
+        }
+        
+        function showMonthly() {
+            document.querySelectorAll('.donor-row').forEach(row => {
+                const isMonthly = row.querySelector('.monthly-badge') !== null;
+                row.style.display = isMonthly ? '' : 'none';
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>💰 December 2025 Donor Checklist</h1>
+        <p>Cloudcroft Reader & Mountain Monthly - Donor Management & Thank You Tracking</p>
+        <p>Monthly Pledge Total: $307.00 | Total Raised: $11,347.00</p>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number" id="totalDonors">97</div>
+                <div class="stat-label">Total Donors</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="completedDonors">0</div>
+                <div class="stat-label">Completed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="remainingDonors">97</div>
+                <div class="stat-label">Remaining</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🔍 Search & Filter</h2>
+        <input type="text" id="searchBox" class="search-box" placeholder="Search by name, email, or amount...">
+        
+        <div class="controls">
+            <button onclick="showAll()">Show All</button>
+            <button onclick="showUnchecked()">Show Unchecked Only</button>
+            <button onclick="showMonthly()">Monthly Donors Only</button>
+            <button class="reset" onclick="resetChecklist()">Reset All Checkmarks</button>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>📋 Donor List - Click row to mark complete</h2>
+        
+        <div class="donor-group">
+            <h3>All Donors (97)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>✓</th>
+                        <th>Donor Name</th>
+                        <th>Amount</th>
+                        <th>Type</th>
+                        <th>Contact</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Ann Davis</td>
+                        <td class="amount">$50.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">davismob@swbell.net</td>
+                        <td>Jan 1, 2026</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Bill & Cheri Hass</td>
+                        <td class="amount">$150.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">chass75@icloud.com</td>
+                        <td>Dec 31, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Marietta Crane</td>
+                        <td class="amount">$10.00<span class="monthly-badge">MONTHLY</span></td>
+                        <td><span class="frequency">$120/year</span></td>
+                        <td class="email">marietta.crane2@gmail.com</td>
+                        <td>Dec 31, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Martha & Larry Dahl</td>
+                        <td class="amount">$200.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">migawoof@gmail.com</td>
+                        <td>Dec 31, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Sean & Monica Henschel</td>
+                        <td class="amount">$120.00<span class="yearly-badge">YEARLY</span></td>
+                        <td><span class="frequency">annual</span></td>
+                        <td class="email">monica@desertpepper.com</td>
+                        <td>Dec 31, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Sean Smith</td>
+                        <td class="amount">$48.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">seasmith42@gmail.com</td>
+                        <td>Dec 29, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Paul Barrows</td>
+                        <td class="amount">$100.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">barrows.paul@gmail.com</td>
+                        <td>Dec 29, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Advanced Septic Pros LLC</td>
+                        <td class="amount">$250.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">Info@AdvancedSepticPros.com</td>
+                        <td>Dec 29, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>David and Anne Marie Larsen</td>
+                        <td class="amount">$25.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">davidelarsen51@gmail.com</td>
+                        <td>Dec 28, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Della Webb</td>
+                        <td class="amount">$25.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">dwebb1919@gmail.com</td>
+                        <td>Dec 28, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Barbara Hartley</td>
+                        <td class="amount">$10.00<span class="monthly-badge">MONTHLY</span></td>
+                        <td><span class="frequency">$120/year</span></td>
+                        <td class="email">dochartleytoo@outlook.com</td>
+                        <td>Dec 28, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Gerardo & Hilda Acuna</td>
+                        <td class="amount">$20.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">ghacuna@yahoo.com</td>
+                        <td>Dec 28, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>SAM COATS</td>
+                        <td class="amount">$150.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">samcoats@sbcglobal.net</td>
+                        <td>Dec 28, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Stan & Joan Watson</td>
+                        <td class="amount">$200.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">506 Oakwood Pl, Carlsbad, NM 88220</td>
+                        <td>Dec 28, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>CC House - Artesia</td>
+                        <td class="amount">$500.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">—</td>
+                        <td>Dec 28, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Hans Steinhoff</td>
+                        <td class="amount">$30.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">hsteinhoff@tularosa.net</td>
+                        <td>Dec 25, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Madi Evans</td>
+                        <td class="amount">$5.00<span class="monthly-badge">MONTHLY</span></td>
+                        <td><span class="frequency">$60/year</span></td>
+                        <td class="email">madievans@pvtn.net</td>
+                        <td>Dec 24, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Jean Ramsey</td>
+                        <td class="amount">$25.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">jeanramsey@pvtnetworks.net</td>
+                        <td>Dec 22, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Tracy Lockhart</td>
+                        <td class="amount">$150.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">tracylockhart2@gmail.com</td>
+                        <td>Dec 21, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>David Colarusso</td>
+                        <td class="amount">$10.00<span class="monthly-badge">MONTHLY</span></td>
+                        <td><span class="frequency">$120/year</span></td>
+                        <td class="email">dac33@cornell.edu</td>
+                        <td>Dec 21, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Carie Mckinney</td>
+                        <td class="amount">$5.00<span class="monthly-badge">MONTHLY</span></td>
+                        <td><span class="frequency">$60/year</span></td>
+                        <td class="email">cgmckinney2@aol.com</td>
+                        <td>Dec 21, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>RODNEY SLATON</td>
+                        <td class="amount">$100.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">RSLATON.T3@GMAIL.COM</td>
+                        <td>Dec 19, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Timothy Kruse</td>
+                        <td class="amount">$100.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">tkruse56@yahoo.com</td>
+                        <td>Dec 19, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Terry Schul</td>
+                        <td class="amount">$15.00<span class="monthly-badge">MONTHLY</span></td>
+                        <td><span class="frequency">$180/year</span></td>
+                        <td class="email">skyag@sbcglobal.net</td>
+                        <td>Dec 19, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Amy Parker-Morris</td>
+                        <td class="amount">$150.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">parkermorris1971@gmail.com</td>
+                        <td>Dec 19, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Kerie van Zeyst</td>
+                        <td class="amount">$25.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">apothokeri@gmail.com</td>
+                        <td>Dec 19, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Terry Kyle</td>
+                        <td class="amount">$100.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">terry.satx@gmail.com</td>
+                        <td>Dec 19, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Laura Rabon</td>
+                        <td class="amount">$100.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">lawalsh23@gmail.com</td>
+                        <td>Dec 19, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Hanna Carter</td>
+                        <td class="amount">$10.00<span class="monthly-badge">MONTHLY</span></td>
+                        <td><span class="frequency">$120/year</span></td>
+                        <td class="email">hannaleacarter@gmail.com</td>
+                        <td>Dec 19, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Tami Swingler</td>
+                        <td class="amount">$15.00<span class="monthly-badge">MONTHLY</span></td>
+                        <td><span class="frequency">$180/year</span></td>
+                        <td class="email">tami@newedgedesignstudio.com</td>
+                        <td>Dec 19, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Skip Smith</td>
+                        <td class="amount">$50.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">Roundrockvolleyball@gmail.com</td>
+                        <td>Dec 19, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Don Watts</td>
+                        <td class="amount">$5.00<span class="monthly-badge">MONTHLY</span></td>
+                        <td><span class="frequency">$60/year</span></td>
+                        <td class="email">donwatts711@gmail.com</td>
+                        <td>Dec 19, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Dmitry Bizyaev</td>
+                        <td class="amount">$10.00<span class="monthly-badge">MONTHLY</span></td>
+                        <td><span class="frequency">$120/year</span></td>
+                        <td class="email">dmbiz2@gmail.com</td>
+                        <td>Dec 19, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Darrel Teaver</td>
+                        <td class="amount">$5.00<span class="monthly-badge">MONTHLY</span></td>
+                        <td><span class="frequency">$60/year</span></td>
+                        <td class="email">dteaver19@gmail.com</td>
+                        <td>Dec 18, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Matt Willett</td>
+                        <td class="amount">$100.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">highaltitudematt@gmail.com</td>
+                        <td>Dec 18, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Charlene Basham</td>
+                        <td class="amount">$15.00<span class="monthly-badge">MONTHLY</span></td>
+                        <td><span class="frequency">$180/year</span></td>
+                        <td class="email">charbiff@gmail.com</td>
+                        <td>Dec 18, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>WILLIAM HANSON</td>
+                        <td class="amount">$120.00<span class="yearly-badge">YEARLY</span></td>
+                        <td><span class="frequency">annual</span></td>
+                        <td class="email">whanson47@gmail.com</td>
+                        <td>Dec 18, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Leah Ross</td>
+                        <td class="amount">$50.00<span class="monthly-badge">MONTHLY</span></td>
+                        <td><span class="frequency">$600/year</span></td>
+                        <td class="email">leahfbb@gmail.com</td>
+                        <td>Dec 18, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>CHRIS BURTON</td>
+                        <td class="amount">$250.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">icufinallywrote@yahoo.com</td>
+                        <td>Dec 18, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Justin & Marianne Muñoz</td>
+                        <td class="amount">$200.00<span class="yearly-badge">YEARLY</span></td>
+                        <td><span class="frequency">annual</span></td>
+                        <td class="email">justin@futurerealestate.com</td>
+                        <td>Dec 18, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Dru and Craig Chapman</td>
+                        <td class="amount">$25.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">dhchapman4@hmail.com</td>
+                        <td>Dec 18, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Mark Ferring</td>
+                        <td class="amount">$250.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">mferring1@gmail.com</td>
+                        <td>Dec 18, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Jim Goodwin</td>
+                        <td class="amount">$100.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">jimgoodwin48@gmail.com</td>
+                        <td>Dec 18, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Dave Venable</td>
+                        <td class="amount">$365.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">davejan@zianet.com</td>
+                        <td>Dec 16, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Donna G Casey</td>
+                        <td class="amount">$250.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">Circus2u@aol.com</td>
+                        <td>Dec 16, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Valerie Stagaman</td>
+                        <td class="amount">$20.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">stagasound@gmail.com</td>
+                        <td>Dec 15, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Mark Tatum</td>
+                        <td class="amount">$100.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">mark@tatumbrothers.com</td>
+                        <td>Dec 13, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Mark Tatum</td>
+                        <td class="amount">$100.00</td>
+                        <td><span class="frequency">one-time (duplicate)</span></td>
+                        <td class="email">mark@tatumbrothers.com</td>
+                        <td>Dec 13, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Julie Swift</td>
+                        <td class="amount">$100.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">juliekayswift@gmail.com</td>
+                        <td>Dec 13, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Mary Bott</td>
+                        <td class="amount">$15.00<span class="monthly-badge">MONTHLY</span></td>
+                        <td><span class="frequency">$180/year</span></td>
+                        <td class="email">mbott@me.com</td>
+                        <td>Dec 12, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Stan and Ginger Hearne</td>
+                        <td class="amount">$250.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">stanhea@mac.com</td>
+                        <td>Dec 12, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Gail Overstreet</td>
+                        <td class="amount">$50.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">gailodd@pm.me</td>
+                        <td>Dec 12, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Amy Coor</td>
+                        <td class="amount">$50.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">amycoor@me.com</td>
+                        <td>Dec 12, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Charles Ramay</td>
+                        <td class="amount">$50.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">ramayconsulting@gmail.com</td>
+                        <td>Dec 12, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Pam Runyan</td>
+                        <td class="amount">$50.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">tprunyan@pvtn.net</td>
+                        <td>Dec 12, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>David Amidei</td>
+                        <td class="amount">$150.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">damidei3425@gmail.com</td>
+                        <td>Dec 12, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Jack Britton</td>
+                        <td class="amount">$100.00<span class="yearly-badge">YEARLY</span></td>
+                        <td><span class="frequency">annual</span></td>
+                        <td class="email">jackbbritton@yahoo.com</td>
+                        <td>Dec 12, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Jann Hunter</td>
+                        <td class="amount">$50.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">jannhunter373@gmail.com</td>
+                        <td>Dec 12, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Kirk Cooper</td>
+                        <td class="amount">$50.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">kirk.cooper.antuna@gmail.com</td>
+                        <td>Dec 11, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Roger Donnelson</td>
+                        <td class="amount">$250.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">rddonnelson@tularosa.net</td>
+                        <td>Dec 11, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Barbara Pugh</td>
+                        <td class="amount">$35.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">barbjpugh@gmail.com</td>
+                        <td>Dec 11, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Judy Gordinier</td>
+                        <td class="amount">$50.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">judygordinier@gmail.com</td>
+                        <td>Dec 11, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Cheryl Kaufman</td>
+                        <td class="amount">$100.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">ckaufman@utexas.edu</td>
+                        <td>Dec 11, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Eric Pearson</td>
+                        <td class="amount">$150.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">injuryss@yaboo.com</td>
+                        <td>Dec 11, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Christian W Westphal</td>
+                        <td class="amount">$10.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">cwwyeolde@gmail.com</td>
+                        <td>Dec 9, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>William Tippin</td>
+                        <td class="amount">$120.00<span class="yearly-badge">YEARLY</span></td>
+                        <td><span class="frequency">annual</span></td>
+                        <td class="email">jctippin@gmail.com</td>
+                        <td>Dec 9, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Mira Pepper</td>
+                        <td class="amount">$50.00<span class="monthly-badge">MONTHLY</span></td>
+                        <td><span class="frequency">$15/year</span></td>
+                        <td class="email">Mirapepper@hotmail.com</td>
+                        <td>Dec 9, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Lynn Kriegshauser</td>
+                        <td class="amount">$50.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">lynnkriegshauset@att.net</td>
+                        <td>Dec 9, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Jackie Maxon</td>
+                        <td class="amount">$25.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">jaclynmaxon@gmail.com</td>
+                        <td>Dec 8, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Robert Levy</td>
+                        <td class="amount">$110.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">robert.laurence.levy@gmail.com</td>
+                        <td>Dec 8, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Angela Hagen</td>
+                        <td class="amount">$100.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">akhagentucson@gmail.com</td>
+                        <td>Dec 8, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Peter Kendall</td>
+                        <td class="amount">$150.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">pete@kendallp.net</td>
+                        <td>Dec 8, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Heidi Gibbons</td>
+                        <td class="amount">$25.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">hgibbons2016@gmail.com</td>
+                        <td>Dec 8, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Brent Jordan</td>
+                        <td class="amount">$500.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">brejor@me.com</td>
+                        <td>Dec 8, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Sue Preslar</td>
+                        <td class="amount">$15.00<span class="monthly-badge">MONTHLY</span></td>
+                        <td><span class="frequency">$180/year</span></td>
+                        <td class="email">presllasue@yahoo.com</td>
+                        <td>Dec 8, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Dona Sennett</td>
+                        <td class="amount">$25.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">newlifeinalamo@gmail.com</td>
+                        <td>Dec 8, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Don Watts</td>
+                        <td class="amount">$100.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">donwatts711@gmail.com</td>
+                        <td>Dec 8, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Christine Milyard</td>
+                        <td class="amount">$20.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">cmilyard@msn.com</td>
+                        <td>Dec 8, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Dixie Rogers</td>
+                        <td class="amount">$25.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">dixrogers@gmail.com</td>
+                        <td>Dec 8, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Chris Vanderlinden</td>
+                        <td class="amount">$20.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">litetidude@yahoo.com</td>
+                        <td>Dec 8, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Gustavo Armas</td>
+                        <td class="amount">$7.00<span class="monthly-badge">MONTHLY</span></td>
+                        <td><span class="frequency">$84/year</span></td>
+                        <td class="email">armasfam.ga@gmail.com</td>
+                        <td>Dec 7, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Kathleen Crinklaw</td>
+                        <td class="amount">$120.00<span class="yearly-badge">YEARLY</span></td>
+                        <td><span class="frequency">annual</span></td>
+                        <td class="email">kathleencrinklaw@gmail.com</td>
+                        <td>Dec 7, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Brian Sharp</td>
+                        <td class="amount">$75.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">bscottsharp02@gmail.com</td>
+                        <td>Dec 7, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Stephanie Collins</td>
+                        <td class="amount">$150.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">stephaniezcollins@gmail.com</td>
+                        <td>Dec 7, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Carie Mckinney</td>
+                        <td class="amount">$15.00<span class="monthly-badge">MONTHLY</span></td>
+                        <td><span class="frequency">$180/year</span></td>
+                        <td class="email">cgmckinney2@aol.com</td>
+                        <td>Dec 7, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Joey Pacheco</td>
+                        <td class="amount">$25.00<span class="monthly-badge">MONTHLY</span></td>
+                        <td><span class="frequency">$300/year</span></td>
+                        <td class="email">jprealtor01@gmail.com</td>
+                        <td>Dec 7, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Elizabeth Blohm</td>
+                        <td class="amount">$100.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">Libbyannblohm@gmail.com</td>
+                        <td>Dec 7, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Charlie Harris</td>
+                        <td class="amount">$15.00<span class="monthly-badge">MONTHLY</span></td>
+                        <td><span class="frequency">$180/year</span></td>
+                        <td class="email">charlie@charlieharris.com</td>
+                        <td>Dec 7, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Elizabeth Blohm</td>
+                        <td class="amount">$100.00</td>
+                        <td><span class="frequency">one-time (duplicate)</span></td>
+                        <td class="email">Libbyannblohm@gmail.com</td>
+                        <td>Dec 7, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Kathy Duncan</td>
+                        <td class="amount">$50.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">kduncan5453@gmail.com</td>
+                        <td>Dec 7, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Lesa Provenghi</td>
+                        <td class="amount">$100.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">lcproven@icloud.com</td>
+                        <td>Dec 7, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>jane e klayman</td>
+                        <td class="amount">$15.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">jklayman@tularosa.net</td>
+                        <td>Dec 7, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Mike Foster</td>
+                        <td class="amount">$500.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">mfosterhome@sbcglobal.net</td>
+                        <td>Dec 7, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>SAM COATS</td>
+                        <td class="amount">$250.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">samcoats@sbcglobal.net</td>
+                        <td>Dec 7, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Michael London</td>
+                        <td class="amount">$25.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">mlondon4@gmail.com</td>
+                        <td>Dec 7, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Winner of the Bet</td>
+                        <td class="amount">$10.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">hdean7224@gmail.com</td>
+                        <td>Dec 7, 2025</td>
+                    </tr>
+                    <tr class="donor-row">
+                        <td class="checkbox-cell">☐</td>
+                        <td>Chris Hearne</td>
+                        <td class="amount">$10.00</td>
+                        <td><span class="frequency">one-time</span></td>
+                        <td class="email">chrishea@mac.com</td>
+                        <td>Dec 7, 2025</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>December 2025 Donor Checklist - Cloudcroft Reader</p>
+        <p>Ensuring comprehensive donor management and appreciation</p>
+        <p>© Cloudcroft Reader</p>
+    </div>
+</body>
+</html>

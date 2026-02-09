@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mountain Monthly - Cloudcroft's Community Newspaper</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: white; /* Snow White */
+            font-family: Georgia, serif;
+            color: #5C6B73; /* Granite Gray */
+        }
+
+        .wrap {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding:0 2vh!important;s
+        }
+
+        /* Hero Section */
+        .hero {
+            width: 100%;
+            background: #fff; 
+            padding: 20px;
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .hero-main {
+            width: 50%;
+        
+            background: #fff;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            flex-shrink: 0;
+            padding: 8px;
+        }
+
+        .hero-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+
+        .hero-main:hover img {
+            opacity: 0.85;
+        }
+
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 48% 48% ;
+            grid-template-rows: 50% 50%;
+            gap: 8px;
+            flex-shrink: 0;
+            width:50%!important;
+        }
+
+        .hero-tile {
+            background: #fff;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .hero-tile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+
+        .hero-tile:hover img {
+            opacity: 0.85;
+        }
+
+        /* Content Section */
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 2px 8px rgba(44, 95, 79, 0.1);
+        }
+
+        .business-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 20px 0;
+            color: #2C5F4F; /* Forest Pine Green */
+            font-family: Georgia, serif;
+        }
+
+        .description {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            margin: 0 0 40px 0;
+            color: #5C6B73; /* Granite Gray */
+        }
+
+        /* Address Section */
+        .address {
+            margin-bottom: 40px;
+            font-size: 1rem;
+            line-height: 1.8;
+            padding: 20px;
+            background: #F5F5F0; /* Snow White */
+            border-left: 4px solid #4A7C9E; /* Mountain Sky Blue */
+            border-radius: 4px;
+        }
+
+        .address-line {
+            margin: 0;
+            color: #5C6B73; /* Granite Gray */
+        }
+
+        .address-line strong {
+            color: #2C5F4F; /* Forest Pine Green */
+        }
+
+        /* Contact Links */
+        .contact-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 20px;
+            background: #4A7C9E; /* Mountain Sky Blue */
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(44, 95, 79, 0.2);
+        }
+
+        .contact-link:hover {
+            background: #2C5F4F; /* Forest Pine Green */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(44, 95, 79, 0.3);
+        }
+
+        .contact-link:nth-child(even) {
+            background: #8B7355; /* Weathered Wood */
+        }
+
+        .contact-link:nth-child(even):hover {
+            background: #2C5F4F; /* Forest Pine Green */
+        }
+
+        .contact-link svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            fill: currentColor;
+        }
+
+        /* Accent for special links */
+        .contact-link.featured {
+            background: #D4A574; /* Aspen Gold */
+            color: #2C5F4F; /* Forest Pine Green */
+        }
+
+        .contact-link.featured:hover {
+            background: #C97B63; /* Sunset Coral */
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-main {
+                width: 100%;
+                max-width: 488px;
+                height: auto;
+                aspect-ratio: 488 / 368;
+            }
+
+            .hero-grid {
+                width: 100%;
+                max-width: 496px;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto auto;
+            }
+
+            .hero-tile {
+                aspect-ratio: 240 / 180;
+            }
+
+            .business-name {
+                font-size: 2rem;
+            }
+
+            .description {
+                font-size: 1.1rem;
+            }
+
+            .contact-links {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap"> 
+        <!-- Hero Image Section -->
+        <div class="hero">
+            <div class="hero-main">
+                <img src="mm-camp-rio-hipcamp-page.png" alt="Mountain Monthly - Lincoln National Forest">
+            </div>
+            <div class="hero-grid">
+                <div class="hero-tile" style="background:orange">
+                    <img src="tile1.jpg" alt="">
+                </div>
+                <div class="hero-tile" style="background:steelblue; color:none">
+                    <img src="tile2.jpg" alt="">
+                </div>
+                <div class="hero-tile" style="background:grey">
+                    <img src="tile3.jpg" alt="">
+                </div>
+                <div class="hero-tile" style="background:yellow" style="background:orange">
+                    <img src="tile4.jpg" alt="">
+                </div>
+            </div>
+        </div>
+
+        <!-- Business Information Section -->
+        <div class="content">
+            <!-- Business Name -->
+            <h1 class="business-name">Mountain Monthly</h1>
+
+            <!-- Description -->
+            <p class="description">Cloudcroft's trusted community newspaper serving the Lincoln National Forest region.</p>
+
+            <!-- Address Section -->
+            <div class="address">
+                <p class="address-line"><strong>Address:</strong></p>
+                <p class="address-line">123 Pine Street</p>
+                <p class="address-line">Cloudcroft, NM 88317</p>
+            </div>
+
+            <!-- Contact Links Section -->
+            <div class="contact-links">
+                <!-- Website Link -->
+                <a href="https://www.mountainmonthly.com" class="contact-link featured" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    Website
+                </a>
+
+                <!-- Email Link -->
+                <a href="mailto:news@mountainmonthly.com" class="contact-link">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    Email
+                </a>
+
+                <!-- Text/SMS Link -->
+                <a href="sms:+15055551234" class="contact-link">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"/></svg>
+                    Text
+                </a>
+
+                <!-- Facebook Link -->
+                <a href="https://www.facebook.com/mountainmonthly" class="contact-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    Facebook
+                </a>
+
+                <!-- Instagram Link -->
+                <a href="https://www.instagram.com/mountainmonthly" class="contact-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    Instagram
+                </a>
+
+                <!-- Twitter/X Link -->
+                <a href="https://twitter.com/mountainmonthly" class="contact-link" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    Twitter
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+

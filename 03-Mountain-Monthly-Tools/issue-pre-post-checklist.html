@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Launch Checklist - Cloudcroft Reader</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=IBM+Plex+Serif:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'IBM Plex Serif', serif;
+            font-size: 13px;
+            line-height: 1.6;
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: steelblue;
+        }
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-family: 'IBM Plex Sans', sans-serif;
+            margin: 0 0 10px 0;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        .header p {
+            font-family: 'IBM Plex Sans', sans-serif;
+            margin: 0;
+            font-style: italic;
+            opacity: 0.9;
+            font-size: 13px;
+        }
+        .section {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .section h2 {
+            font-family: 'IBM Plex Sans', sans-serif;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 0;
+            font-size: 20px;
+            font-weight: 700;
+        }
+        .section h3 {
+            font-family: 'IBM Plex Sans', sans-serif;
+            color: #34495e;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .checklist-group {
+            background-color: #f8f9fa;
+            border-left: 5px solid #3498db;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .checklist-group h3 {
+            font-family: 'IBM Plex Sans', sans-serif;
+            color: #2c3e50;
+            margin-top: 0;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 10px 0;
+        }
+        li {
+            font-family: 'IBM Plex Serif', serif;
+            font-size: 13px;
+            margin: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        li {
+            cursor: pointer;
+            user-select: none;
+        }
+        li:before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            font-size: 16px;
+            color: #3498db;
+            transition: all 0.2s ease;
+        }
+        li.checked:before {
+            content: "☒";
+            color: #27ae60;
+        }
+        li:hover:before {
+            transform: scale(1.2);
+        }
+        .subfolder {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 12px;
+            color: #555;
+            margin-left: 20px;
+        }
+        .phase-divider {
+            background-color: #34495e;
+            color: white;
+            padding: 15px 25px;
+            margin: 30px 0 20px 0;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .phase-divider h2 {
+            font-family: 'IBM Plex Sans', sans-serif;
+            margin: 0;
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+            border: none;
+            padding: 0;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #e8e8e8;
+            font-style: italic;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 13px;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all list items
+            const checkboxItems = document.querySelectorAll('li');
+            
+            // Add click event to each item
+            checkboxItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    // Toggle checked class
+                    this.classList.toggle('checked');
+                    
+                    // Save state to localStorage
+                    saveChecklistState();
+                });
+            });
+            
+            // Load saved state
+            loadChecklistState();
+        });
+        
+        function saveChecklistState() {
+            const checkedItems = [];
+            document.querySelectorAll('li.checked').forEach((item, index) => {
+                // Create a unique identifier for each item based on its text content
+                const itemText = item.textContent.trim().substring(0, 50);
+                checkedItems.push(itemText);
+            });
+            localStorage.setItem('checklistState', JSON.stringify(checkedItems));
+        }
+        
+        function loadChecklistState() {
+            const savedState = localStorage.getItem('checklistState');
+            if (savedState) {
+                const checkedItems = JSON.parse(savedState);
+                document.querySelectorAll('li').forEach(item => {
+                    const itemText = item.textContent.trim().substring(0, 50);
+                    if (checkedItems.includes(itemText)) {
+                        item.classList.add('checked');
+                    }
+                });
+            }
+        }
+        
+        function resetChecklist() {
+            document.querySelectorAll('li').forEach(item => {
+                item.classList.remove('checked');
+            });
+            localStorage.removeItem('checklistState');
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>📋 Launch Checklist</h1>
+        <p>CR+MM Workflow</p>
+        <button onclick="resetChecklist()" style="background-color: #e74c3c; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-family: 'IBM Plex Sans', sans-serif; font-size: 13px; margin-top: 15px;">Reset All Checkmarks</button>
+    </div>
+
+    <div class="section">
+        <h2>PRE-PUBLICATION (Before Issue Goes Live)</h2>
+        
+        <div class="checklist-group">
+            <h3>Production Setup</h3>
+            <ul>
+                <li>Create 'Ad-Run-Report-2026-{MONTH}' in Production-Issue-{MONTH} folder</li>
+                <li>Create 'Editorial-Content-2026-{MONTH}' with subfolders:
+                    <div class="subfolder">
+                        • Page-1 → Page-1-art / Page-1-text<br>
+                        • Home-Front → Home-Front-art / Home-Front-text<br>
+                        • News → News-art / News-text<br>
+                        • Maps → Maps-art / Maps-text<br>
+                        • Visitor-Guide → Visitor-Guide-art / Visitor-Guide-text<br>
+                        • Voices → Voices-art / Voices-text<br>
+                        • Passings → Passings-art / Passings-text<br>
+                        • Faces & Places → Faces & Places-art / Faces & Places-text
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="checklist-group">
+            <h3>Content Review</h3>
+            <ul>
+                <li>All articles run through The Scrubber for editorial analysis</li>
+                <li>Fact-checking completed on all claims and statistics</li>
+                <li>AP Style compliance verified</li>
+                <li>Libel risk assessment completed for sensitive stories</li>
+                <li>AI-generated text detection run on all submissions</li>
+                <li>Headlines reviewed for accuracy and clarity</li>
+                <li>Bylines and photo credits confirmed</li>
+            </ul>
+        </div>
+
+        <div class="checklist-group">
+            <h3>Technical Checks</h3>
+            <ul>
+                <li>All links tested and functional, esp QR codes</li>
+                <li>Images optimized and properly formatted</li>
+                <li>Photo captions complete and accurate</li>
+                <li>Mobile formatting verified</li>
+                <li>Email template tested across platforms</li>
+            </ul>
+        </div>
+
+        <div class="checklist-group">
+            <h3>Legal/Ethical</h3>
+            <ul>
+                <li>Source attributions verified</li>
+                <li>Permission obtained for all photos/graphics</li>
+                <li>Conflicts of interest disclosed where relevant</li>
+                <li>Privacy concerns addressed for sensitive stories</li>
+            </ul>
+        </div>
+
+        <div class="checklist-group">
+            <h3>Final Approval</h3>
+            <ul>
+                <li>Co-owner review completed (Chris & Hannah)</li>
+                <li>Email subject line finalized</li>
+                <li>Send time scheduled</li>
+                <li>PDF subscriber email sent on day of printing</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="phase-divider">
+        <h2>POST-PUBLICATION (After Issue is Sent)</h2>
+    </div>
+
+    <div class="section">
+        <div class="checklist-group">
+            <h3>Distribution Verification</h3>
+            <ul>
+                <li>Email delivery successful (check bounce rate)</li>
+                <li>Social media posts published (Facebook)</li>
+                <li>Website updated with latest content</li>
+                <li>Mountain Monthly Facebook page lead photo updated with image from new issue</li>
+            </ul>
+        </div>
+
+        <div class="checklist-group">
+            <h3>Print Distribution</h3>
+            <ul>
+                <li>Issues received from printer</li>
+                <li>Address labels affixed to print subscriber copies</li>
+                <li>Print subscriptions mailed</li>
+            </ul>
+        </div>
+
+        <div class="checklist-group">
+            <h3>Engagement Monitoring</h3>
+            <ul>
+                <li>Open rates tracked</li>
+                <li>Click-through rates monitored</li>
+                <li>Social media engagement reviewed</li>
+                <li>Reader comments/feedback monitored</li>
+            </ul>
+        </div>
+
+        <div class="checklist-group">
+            <h3>Corrections Protocol</h3>
+            <ul>
+                <li>Any errors identified and logged</li>
+                <li>Corrections issued promptly if needed</li>
+                <li>Correction notices posted on website/social media</li>
+            </ul>
+        </div>
+
+        <div class="checklist-group">
+            <h3>Follow-up Tasks</h3>
+            <ul>
+                <li>Reader questions/comments responded to</li>
+                <li>Story follow-ups scheduled if needed</li>
+                <li>Tips or leads from readers logged</li>
+            </ul>
+        </div>
+
+        <div class="checklist-group">
+            <h3>Metrics Documentation</h3>
+            <ul>
+                <li>Subscriber count updated</li>
+                <li>Performance metrics recorded</li>
+                <li>Top-performing stories noted</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Launch Checklist - Cloudcroft Reader</p>
+        <p>Ensuring comprehensive workflow management for every publication</p>
+        <p>© Cloudcroft Reader</p>
+    </div>
+</body>
+</html>

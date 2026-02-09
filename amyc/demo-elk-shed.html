@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Business Name - Short Description</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #fff;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #333;
+        }
+
+        /* Branding Header */
+        .brand-header {
+            background: #003366;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .brand-header h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 600px) {
+            .brand-header h1 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            width: 100%;
+            height: 60vh;
+            min-height: 400px;
+            background: #ddd;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Content Section */
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .business-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 20px 0;
+            color: #222;
+        }
+
+        .description {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            margin: 0 0 40px 0;
+            color: #555;
+        }
+
+        /* Address Section */
+        .address {
+            margin-bottom: 40px;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .address-line {
+            margin: 0;
+        }
+
+        /* Contact Links */
+        .contact-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 20px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .contact-link:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .contact-link svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            fill: currentColor;
+        }
+
+        @media (max-width: 600px) {
+            .business-name {
+                font-size: 2rem;
+            }
+
+            .description {
+                font-size: 1.1rem;
+            }
+
+            .contact-links {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Branding Header -->
+    <header class="brand-header">
+        <h1>Mountain Monthly Connection</h1>
+    </header>
+
+<!-- Hero Image Section -->
+<div class="hero">
+    <img src="mm-merchant-hero-template.jpg" alt="Business Hero Image" class="hero-main">
+    <div class="hero-sidebar">
+        <img src="mm-merchant-hero-template.jpg" alt="Business Image 2" class="hero-side">
+        <img src="mm-merchant-hero-template.jpg" alt="Business Image 3" class="hero-side">
+        <img src="mm-merchant-hero-template.jpg" alt="Business Image 4" class="hero-side">
+    </div>
+</div>
+
+    <!-- Business Information Section -->
+    <div class="content">
+        <!-- Business Name (TEMPLATE: Replace with your business name) -->
+        <h1 class="business-name">The Elk Shed</h1>
+
+        <!-- Description (TEMPLATE: 15 words or less) -->
+        <p class="description">A short, compelling description of your business in fifteen words or less.</p>
+
+        <!-- Address Section (TEMPLATE: Replace with your address) -->
+        <div class="address">
+            <p class="address-line"><strong>Address:</strong></p>
+            <p class="address-line">123 Main Street</p>
+            <p class="address-line">City Name, State 12345</p>
+        </div>
+
+        <!-- Contact Links Section -->
+        <div class="contact-links">
+            <!-- Website Link (TEMPLATE: Replace href with your website URL) -->
+            <a href="https://www.example.com" class="contact-link" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                Website
+            </a>
+
+            <!-- Email Link (TEMPLATE: Replace href with your email) -->
+            <a href="mailto:info@example.com" class="contact-link">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                Email
+            </a>
+
+            <!-- Text/SMS Link (TEMPLATE: Replace href with your phone number) -->
+            <a href="sms:+15551234567" class="contact-link">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"/></svg>
+                Text
+            </a>
+
+            <!-- Facebook Link (TEMPLATE: Replace href with your Facebook page URL) -->
+            <a href="https://www.facebook.com/yourbusiness" class="contact-link" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                Facebook
+            </a>
+
+            <!-- Instagram Link (TEMPLATE: Replace href with your Instagram profile URL) -->
+            <a href="https://www.instagram.com/yourbusiness" class="contact-link" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                Instagram
+            </a>
+
+            <!-- Twitter/X Link (TEMPLATE: Replace href with your Twitter/X profile URL) -->
+            <a href="https://twitter.com/yourbusiness" class="contact-link" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                Twitter
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+

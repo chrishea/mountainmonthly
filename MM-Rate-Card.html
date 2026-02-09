@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Mountain Monthly Advertising Rates</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+    rel="stylesheet">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'dm sans', sans-serif;
+      color: #222;
+      margin: 0;
+      padding: 0;
+      background-image: url('MM-Landing-Bkgnd.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.75);
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 24px auto;
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 30px 26px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(44, 64, 41, 0.25);
+    }
+
+    .header {
+      background-color: #2e4a3e;
+      color: #fff;
+      text-align: center;
+      padding: 28px 0 16px 0;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .header img {
+      max-height: 96.0px;
+      margin-bottom: 10px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin: 12px 0 6px 0;
+    }
+
+    h2 {
+      color: #2e4a3e;
+      font-size: 20px;
+      margin-top: 26px;
+    }
+
+    p {
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    .service {
+      font-size: larger;
+
+    }
+
+    .rate-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 28px 0 24px 0;
+      font-size: 15px;
+      background: #f9fbf7;
+    }
+
+    .rate-table th,
+    .rate-table td {
+      padding: 12px 8px;
+      text-align: left;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .rate-table th {
+      background-color: #e5eddd;
+      color: #2e4a3e;
+      font-size: 15px;
+      letter-spacing: 0.03em;
+    }
+
+    .rate-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    ul {
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .contact-info {
+      font-weight: bold;
+      color: #2e4a3e;
+      margin: 20px 0 0 0;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    .contact-info a {
+      color: #2e4a3e;
+      text-decoration: none;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: #2e4a3e;
+      color: #ffffff !important;
+      padding: 14px 32px;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 16px;
+      margin: 30px auto 10px auto;
+      text-align: center;
+      transition: background 0.15s;
+    }
+
+    .button:hover {
+      background-color: #253c33;
+    }
+
+    .footer {
+      font-size: 13px;
+      color: #333;
+      text-align: center;
+      margin-top: 38px;
+      border-top: 1px solid #ddd;
+      padding: 40px 0;
+      ;
+    }
+
+    /* Navigation Bar */
+    nav {
+      background-color: var(--dark-green);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid var(--accent-green);
+    }
+
+    nav .logo {
+      color: var(--white);
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+
+    nav .logo:hover {
+      color: #90EE90;
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav .nav-links a:hover {
+      background-color: var(--medium-green);
+    }
+
+    nav .nav-links a.active {
+      background-color: var(--accent-green);
+    }
+
+
+    @media (max-width: 670px) {
+      .container {
+        padding: 15px 5vw;
+        border-radius: 0;
+      }
+
+      .header {
+        padding: 20px 0 10px 0;
+        border-radius: 0;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+
+      h2 {
+        font-size: 16px;
+      }
+
+      p,
+      ul,
+      .rate-table {
+        font-size: 15px;
+      }
+
+      .button {
+        padding: 11px 16px;
+        font-size: 15px;
+      }
+
+      .rate-table th,
+      .rate-table td {
+        padding: 10px 5px;
+      }
+    }
+
+    @media (max-width: 470px) {
+
+      .container,
+      .footer {
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      .rate-table,
+      .rate-table th,
+      .rate-table td {
+        font-size: 13px;
+      }
+
+      .header img {
+        max-height: 45px;
+      }
+
+      h1 {
+        font-size: 17px;
+      }
+
+      body {
+        background-attachment: scroll;
+      }
+    }
+
+    /* Make table scrollable on small screens */
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="#" class="logo">Mountain Monthly</a>
+    <div class="nav-links">
+      <a href="https://mountainmonthly.com/MM-Rate-Card.html">Rates</a>
+      <a href="#" class="active">Specs</a>
+    </div>
+  </nav>
+
+  <div class="header">
+    <img src="art\icon-mm-elk-circle.png" alt="Mountain Monthly Logo">
+    <h1>Mountain Monthly<br />
+      Advertising Rates</h1>
+    <p style="margin-top:0;;color:#f7ed80">February 2026</p>
+  </div>
+
+  <div class="container">
+
+    <p>
+      Thank you for your interest in advertising with the <a href="https://www.mountainmonthly.com"
+        target="_blank">Mountain Monthly</a>. Reach our engaged audience of visitors and locals across the Sacramento
+      Mountains.
+    </p>
+    <p class="service">The newspaper.</p>
+    <div class="table-responsive">
+      <table class="rate-table">
+        <tr>
+          <th>Ad Size</th>
+          <th>Dimensions (inches)</th>
+          <th>Price per Issue</th>
+        </tr>
+        <tr>
+          <td>Full Page</td>
+          <td>10 x 15</td>
+          <td>$735</td>
+        </tr>
+        <tr>
+          <td>3/4 Page</td>
+          <td>10 x 12</td>
+          <td>$665</td>
+        </tr>
+        <tr>
+          <td>1/2 Page</td>
+          <td>10x8, 7.5x10.5, or 5x15</td>
+          <td>$455</td>
+        </tr>
+        <tr>
+          <td>1/3 Page</td>
+          <td>5.25x10, 7x7.5, or 10x5</td>
+          <td>$315</td>
+        </tr>
+        <tr>
+          <td>1/4 Page</td>
+          <td>7.5x5.3 or 5x8</td>
+          <td>$240</td>
+        </tr>
+        <tr>
+          <td>1/6 Page</td>
+          <td>5x6, 7.5x4, or 2.5x12</td>
+          <td>$165</td>
+        </tr>
+        <tr>
+          <td>1/8 Page</td>
+          <td>5x4 or 2.5x8.5</td>
+          <td>$125</td>
+        </tr>
+        <tr>
+          <td>1/12 Page</td>
+          <td>7.5x2, 5x3, or 2.5x6</td>
+          <td>$90</td>
+        </tr>
+        <tr>
+          <td>1/16 Page</td>
+          <td>5x2 or 2.5x4</td>
+          <td>$75</td>
+        </tr>
+        <tr>
+          <td>1/20 Page</td>
+          <td>5x1.5 or 2.5x3</td>
+          <td>$65</td>
+        </tr>
+        <tr>
+          <td>1/33 Page </td>
+          <td>2.5x2</td>
+          <td>$55</td>
+        </tr>
+      </table>
+    </div>
+
+    <p style="text-align:left;">
+    <ul>Additional information<li style="margin-left:22px;">
+        Color available on all ads; no extra charge. </li>
+      <li style="margin-left:22px">10% discount on ads picked-up from prior issue
+    </ul>
+    </p>
+
+    <p style="text-align:center;">
+      <a href="mailto:advertising@mountainmonthly.com?subject=Ad%20Reservation%20Request" class="button">Reserve Your
+        Space</a>
+    </p>
+
+    <p class="contact-info">
+      <a href="mailto:advertising@mountainmonthly.com">advertising@mountainmonthly.com</a><br>
+      www.mountainmonthly.com
+    </p>
+  </div>
+
+  <div class="footer">
+    © 2026 Mountain Monthly LLC – Your Local Guide to Cloudcroft and the Sacramento Mountains
+  </div>
+
+</body>
+
+</html>
