@@ -801,15 +801,9 @@
 
             /* --- Cover click animation --- */
             document.querySelectorAll('.cover-btn').forEach(function (btn) {
-                btn.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    var link = btn.getAttribute('href');
+                btn.addEventListener('click', function () {
                     btn.classList.add('clicked');
-
-                    // Navigate after animation completes
                     btn.addEventListener('animationend', function () {
-                        window.open(link, '_blank');
-                        // Reset so it can be clicked again
                         setTimeout(function () { btn.classList.remove('clicked'); }, 100);
                     }, { once: true });
                 });

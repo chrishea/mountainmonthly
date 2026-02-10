@@ -39,18 +39,29 @@
         }
 
         .box {
-        max-width:400px!important;
+        max-width:860px;
         width:100%;
            background-color: var(--mm-color-bg);
-            margin:2vh auto!important;
+            margin:2vh auto;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 600px) {
+            .box {
+                flex-direction: column;
+                max-width: 400px;
+            }
         }
 
         .card {
             background-color: var(--mm-color-card);
             border-radius: 8px;
-       
+
             padding: 20px 32px;
-            margin: 20px auto;
+            margin: 0;
+            flex: 1;
         }
           html {
             font-size: 13px;
@@ -108,7 +119,6 @@
 </a>
             </div>
     
-<hr style="margin:4vh 0;">
         <div class="card">
           
                 <img src="MM-Dec-2025-Cover.jpg" 
